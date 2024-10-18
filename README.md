@@ -1,9 +1,9 @@
 
-# Teil 1
-# ______________________________________________________
-#                                                       |
-#                     Ziel des Projekt                  |
-# ______________________________________________________|
+
+# _________________
+#                  |
+# Ziel des Projekt |
+# _________________|
 
 Ziel dieses Projekts ist es, Basketballspieler in Gruppen für Spiele auf vorab festgelegten Plätzen zu festgelegten Zeiten zusammenzubringen.
 
@@ -25,10 +25,10 @@ Ziel dieses Projekts ist es, Basketballspieler in Gruppen für Spiele auf vorab 
 - **Benachrichtigungen**: Benachrichtigungen über bevorstehende Spiele, Änderungen im Zeitplan oder wenn jemand seine Teilnahme storniert.
 
 # Teil 2
-# ______________________________________________________
-#                                                       |
-#                     Erweiterte Funktionen:            |
-# ______________________________________________________|
+# ______________________
+#                        |
+# Erweiterte Funktionen: |
+# _______________________|
 
 ### 1. Registrierung und Benutzerprofile
 - **Statistiken und Bewertungen**: Möglichkeit, Spielstatistiken hinzuzufügen (Anzahl erzielter Punkte, Siege, Niederlagen) sowie eine Bewertung der Spieler basierend auf Feedback und Aktivität.
