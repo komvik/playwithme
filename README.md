@@ -10,7 +10,7 @@ Ziel dieses Projekts ist es, Basketballspieler in Gruppen für Spiele auf vorab 
 ## Hauptfunktionen:
 
 ### 1. Registrierung und Benutzerprofile
-- **Spielerprofile**: Spieler können Profile mit Informationen über sich selbst erstellen (Name, Alter, Spielniveau, bevorzugte Positionen auf dem Spielfeld, Lieblingsplätze).
+- **Spielerprofile**: Spieler können Profile mit Informationen über sich selbst erstellen (Name, Alter, Avatar ).
 
 ### 2. Anmeldung und Informationsabruf
 - **Informationen zu bevorstehenden Spielen**: Beim Anmelden in der App erhält der Benutzer aktuelle Informationen zu bevorstehenden Spielen: Anzahl der Teilnehmer, verfügbare Plätze, Spielbeginn und Ort. Alle Daten werden in einem übersichtlichen Format angezeigt, damit der Benutzer schnell ein passendes Spiel auswählen kann.
