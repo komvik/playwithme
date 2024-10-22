@@ -22,8 +22,10 @@ flutter:
   uses-material-design: true
   assets:
    - assets/images/
+   - assets/icons/
+  
 
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: assets/icon/icon_ball_djk.png
+  image_path: assets/icons/

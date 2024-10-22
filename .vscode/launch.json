@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "Flutter (lib/feature/authorization/registration.dart)",
+            "type": "dart",
+            "request": "launch",
+            "program": "lib/feature/authorization/registration.dart"
+        }
+    ]
+}
