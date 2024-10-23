@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/screens/registration_data_screen.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/widgets/create_input_text_field.dart';
 
-class RegistrationScreen extends StatelessWidget {
-  const RegistrationScreen({super.key});
+import 'package:projekt_481_play_with_me/feature/authorization/screens/authorization_screen.dart';
+
+import 'package:projekt_481_play_with_me/feature/authorization/widgets/create_input_text_field.dart';
+import 'package:projekt_481_play_with_me/config/theme.dart';
+
+class RegistrationDataScreen extends StatelessWidget {
+  const RegistrationDataScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +14,8 @@ class RegistrationScreen extends StatelessWidget {
         home: Container(
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/registrieren.png"),
+              scale: 0.5,
+              image: AssetImage("assets/images/background3.png"),
               fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: const Color.fromRGBO(0, 0, 0, 0),
@@ -25,73 +29,72 @@ class RegistrationScreen extends StatelessWidget {
           child: Stack(
             textDirection: TextDirection.ltr,
             children: <Widget>[
-//____________________________ Login
+              const Positioned(
+                top: 50,
+                left: 180,
+                child: Text("AVATAR"),
+              ),
+//____________________________ name
               Positioned(
                 top: 250,
-                left: 100,
+                left: 40,
                 child: CreateInputTextField(
                   onChange: (value) {},
                   inputHeight: 50,
-                  inputWidth: 280,
-                  inputRadius: 20.0,
-                  label: "Login erstellen",
+                  inputWidth: 350,
+                  inputRadius: 10.0,
+                  label: "Geben Sie Ihren Namen ein",
                   inputObscureText: false,
                 ),
               ),
-//____________________________ E-mail
+//____________________________ Nachname
               Positioned(
                 top: 310,
-                left: 10,
+                left: 40,
                 child: CreateInputTextField(
                   onChange: (value) {},
                   inputHeight: 50,
-                  inputWidth: 370,
-                  inputRadius: 20.0,
-                  label: "E-Mail erstellen",
+                  inputWidth: 350,
+                  inputRadius: 10.0,
+                  label: "Geben Sie Ihren Nachnamen ein",
                   inputObscureText: false,
                 ),
               ),
-//____________________________ Input pass
+//____________________________ Spitzname
+
+              const Positioned(
+                top: 400,
+                left: 320,
+                child: Text(
+                  "optional",
+                  style: TextStyle(color: Color.fromARGB(255, 213, 226, 228)),
+                ),
+              ),
               Positioned(
-                top: 370,
-                left: 100,
+                top: 420,
+                left: 40,
                 child: CreateInputTextField(
                   onChange: (value) {},
                   inputHeight: 50,
-                  inputWidth: 280,
-                  inputRadius: 20.0,
-                  label: "Passwort erstellen",
+                  inputWidth: 350,
+                  inputRadius: 10.0,
+                  label: "Geben Sie Ihren Spitznamen ein",
                   inputObscureText: false,
                 ),
               ),
 //____________________________ Widerhollen pass
-              Positioned(
-                top: 430,
-                left: 100,
-                child: CreateInputTextField(
-                  onChange: (value) {},
-                  inputHeight: 50,
-                  inputWidth: 280,
-                  inputRadius: 20.0,
-                  label: "Passwort wiederholen",
-                  inputObscureText: false,
-                ),
-              ),
+
               //_____________
               Positioned(
                 top: 640,
-                left: 100,
+                left: 135,
                 child: GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const RegistrationDataScreen()));
+                        builder: (context) => const AuthorizationScreen()));
                   },
                   child: const Text(
-                    "      Profil erstellen",
-                    style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 237, 174, 97)),
+                    " Profil speichern",
                   ),
                 ),
               ),
