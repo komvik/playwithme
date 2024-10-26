@@ -13,7 +13,7 @@ class RegistrationDataScreen extends StatefulWidget {
 
 class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
   // Variable to store the selected avatar
-  String _selectedAvatar = 'assets/images/avatar1.png'; // Default
+  String _selectedAvatar = 'assets/images_avatar/avatar1.png'; // Default
 
   @override
   Widget build(BuildContext context) {
