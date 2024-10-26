@@ -31,3 +31,8 @@ const Color teakwood = Color.fromARGB(255, 131, 92, 63);
 
 // 9___ MIDNIGHT YOGA  #15213E
 const Color midnightYoga = Color.fromARGB(255, 21, 33, 62);
+
+//_______________________________________________
+
+// 9___ ORANG BALL  #EF680C
+const Color orangBall = Color.fromARGB(255, 239, 104, 12);
