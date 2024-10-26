@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.14.1
   flutter_native_splash: ^2.4.1
+  google_fonts: ^6.2.1
+
 
 
 dev_dependencies:

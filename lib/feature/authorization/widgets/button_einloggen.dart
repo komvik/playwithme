@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/navigation_wrapper/screens/navigation_wrapper.dart';
 
-class ButtonShowGeneralInfo extends StatelessWidget {
-  const ButtonShowGeneralInfo({
+class ButtonEinloggen extends StatelessWidget {
+  const ButtonEinloggen({
     super.key,
   });
 
@@ -13,12 +13,9 @@ class ButtonShowGeneralInfo extends StatelessWidget {
         Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => const NavigationWrapper()));
       },
-      child: const Text(
+      child: Text(
         "     Einloggen",
-        style: TextStyle(
-            fontSize: 34,
-            fontWeight: FontWeight.w800,
-            color: Color.fromARGB(173, 221, 151, 45)),
+        style: Theme.of(context).textTheme.displayMedium,
       ),
     );
   }

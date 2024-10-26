@@ -14,10 +14,9 @@ class ButtonRegistrieren extends StatelessWidget {
               builder: (context) => const RegistrationScreen()));
         },
         //  const RegistrationScreen(),
-        child: Text("Registrieren",
-            style: Theme.of(context)
-                .textTheme
-                .displayMedium
-                ?.copyWith(color: Colors.amber)));
+        child: Text(
+          "Registrieren",
+          style: Theme.of(context).textTheme.titleLarge,
+        ));
   }
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:projekt_481_play_with_me/feature/game_planning/screens/gameplan_screen.dart';
 import 'package:projekt_481_play_with_me/feature/info_fields/screens/info_fields_screen.dart';
 import 'package:projekt_481_play_with_me/feature/info_general/info_general.dart';
 import 'package:projekt_481_play_with_me/feature/info_players/screens/info_players_screen.dart';
-import 'package:projekt_481_play_with_me/feature/settings/screens/settings_screen.dart';
+import 'package:projekt_481_play_with_me/shared/widgets/navigation_app_bar.dart';
 
 class NavigationWrapper extends StatefulWidget {
   const NavigationWrapper({super.key});
@@ -20,7 +21,7 @@ class _NavigationWrapperState extends State<NavigationWrapper> {
     const InfoGeneralScreen(),
     const InfoPlayersScreen(),
     const InfoFieldsScreen(),
-    const SettingsScreen(),
+    const GamePlanningScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -32,6 +33,9 @@ class _NavigationWrapperState extends State<NavigationWrapper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      ///
+
+      appBar: const NavigationAppBar(),
       backgroundColor: const Color.fromARGB(251, 86, 167, 205),
       bottomNavigationBar: NavigationBarTheme(
         data: const NavigationBarThemeData(
@@ -88,20 +92,20 @@ class _NavigationWrapperState extends State<NavigationWrapper> {
                       Image(image: AssetImage("assets/icons/icon_court.png"))),
               label: 'Spielfelder',
             ),
-            //__________________________________________________ Settings
+            //__________________________________________________ Spielplanug
 
             NavigationDestination(
               icon: SizedBox(
                   width: 64,
                   height: 64,
                   child: Image(
-                      image: AssetImage("assets/icons/icon_settings.png"))),
+                      image: AssetImage("assets/icons/icon_gameplan.png"))),
               selectedIcon: SizedBox(
                   width: 128,
                   height: 128,
                   child: Image(
-                      image: AssetImage("assets/icons/icon_settings.png"))),
-              label: 'Settings',
+                      image: AssetImage("assets/icons/icon_gameplan.png"))),
+              label: 'Spielplanung',
             ),
           ],
         ),

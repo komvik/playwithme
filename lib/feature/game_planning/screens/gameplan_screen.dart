@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/screens/authorization_screen.dart';
 
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
+class GamePlanningScreen extends StatelessWidget {
+  const GamePlanningScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class SettingsScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Text("Settings Screen"),
+        const Text("Spielplanung"),
         const SizedBox(height: 200),
         GestureDetector(
             onTap: () {

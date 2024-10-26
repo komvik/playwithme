@@ -1,17 +1,53 @@
 import 'package:projekt_481_play_with_me/config/colors.dart';
+import 'package:projekt_481_play_with_me/config/font_family.dart';
 import 'package:projekt_481_play_with_me/config/sizes.dart';
 
 import 'package:flutter/material.dart';
 
 ThemeData myTheme = ThemeData(
   useMaterial3: true,
-  //________________________________________ Text
-  textTheme: const TextTheme(
-    titleLarge: TextStyle(
-      fontSize: myDisplaySize,
-      color: playerDarkBlue,
-    ),
+  // cardTheme: const CardTheme(color: playerDarkBlue),
+  //________________________________________ TextTheme
+  textTheme: TextTheme(
+    //________________________________________DISPLAY S:M:
 
-    //________________________________________
+    displaySmall: TextStyle(
+      fontSize: myDisplaySmall,
+      color: playerDarkBlue,
+      fontFamily: myFjallaOne.fontFamily,
+    ),
+    //BtnEnloggen,
+    //BtnProfilErstellen
+    //BtnProfilSpeichern
+    displayMedium: TextStyle(
+      fontSize: myDisplayMedium,
+      color: btnTextTeal,
+      //fontFamily: myPassionOne.fontFamily,
+      fontFamily: mybebasNeue.fontFamily,
+    ),
+    //___________________________________________ TITLE S:M:L
+    titleSmall: TextStyle(
+      fontSize: myDisplayMedium,
+      color: playerDarkBlue,
+      fontFamily: myMontserrat.fontFamily,
+    ),
+    titleMedium: TextStyle(
+      fontSize: myDisplayMedium,
+      color: playerDarkBlue,
+      fontFamily: myTeko.fontFamily,
+    ),
+    //Btn Registrieren
+    titleLarge: TextStyle(
+      fontSize: myTitleSmall,
+      color: btnRegistrieren,
+      fontFamily: myMontserrat.fontFamily,
+    ),
+    //______________________________________________LABLE L:
+    labelLarge: TextStyle(
+      fontSize: 16,
+      color: btnRegistrieren,
+      fontFamily: myTeko.fontFamily,
+    ),
+    //________________________________________ Another Theme
   ),
 );
