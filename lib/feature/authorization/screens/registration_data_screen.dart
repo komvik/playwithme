@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/screens/authorization_screen.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/create_input_text_field.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/repositories/avatar_images.dart';
@@ -14,6 +15,17 @@ class RegistrationDataScreen extends StatefulWidget {
 class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
   // Variable to store the selected avatar
   String _selectedAvatar = 'assets/images_avatar/avatar1.png'; // Default
+
+  final ImagePicker _picker = ImagePicker(); // Инициализация ImagePicker
+
+  Future<void> _pickImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      setState(() {
+        _selectedAvatar = image.path; // Обновление выбранного изображения
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,18 +47,20 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
           child: Stack(
             textDirection: TextDirection.ltr,
             children: <Widget>[
-              const Positioned(
+              Positioned(
                 top: 1,
-                left: 300,
-                child: Text(
-                  "optional",
-                  style: TextStyle(color: Color.fromARGB(255, 213, 226, 228)),
+                left: 320,
+                child: IconButton(
+                  iconSize: 48,
+                  icon: const Icon(Icons.photo_library, color: Colors.blue),
+                  onPressed: _pickImage, // Вызов функции для выбора изображения
+                  tooltip: 'Выбрать фото из галереи',
                 ),
               ),
               const Positioned(
                 top: 15,
-                left: 130,
-                child: Text("Erstellen Sie ein Avatar"),
+                left: 110,
+                child: Text("Erstelle deinen eigenen Avatar"),
               ),
               Positioned(
                 top: 50,
