@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'dart:math';
-
+import 'package:projekt_481_play_with_me/feature/chat/widgets/chat_app_bar.dart';
 import 'package:projekt_481_play_with_me/config/colors.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -16,51 +14,20 @@ class _ChatScreenState extends State<ChatScreen> {
   final List<String> _messages = []; // Список для хранения сообщений
   final _controller = TextEditingController(); // Контроллер для текстового поля
 
-  // Небольшой репозиторий ответов для бота
-  final List<String> _botReplies = [
-    "Hallo! Wie kann ich dir helfen?",
-    "Interessanter Gedanke!",
-    "Lass uns das näher besprechen.",
-    "Was möchtest du noch wissen?",
-    "Das ist eine großartige Frage!",
-    "Ich freue mich, dass du hier bist!",
-    "Erzähl weiter, ich bin gespannt!",
-    "Gute Idee!",
-    "Danke für deine Frage!",
-    "Das klingt spannend!",
-  ];
-
-  // Функция для отправки сообщения
   void _sendMessage() {
     final message = _controller.text.trim();
     if (message.isEmpty) return; // Не отправляем пустые сообщения
 
     setState(() {
-      _messages.insert(0, "Du: $message"); // Добавляем сообщение пользователя
+      _messages.insert(0, message); // Добавляем новое сообщение в начало списка
     });
     _controller.clear(); // Очищаем поле ввода
-
-    _sendBotReply(); // Генерация ответа от бота
-  }
-
-  // Функция для создания автоответа от бота
-  void _sendBotReply() {
-    final random = Random();
-    final botMessage =
-        _botReplies[random.nextInt(_botReplies.length)]; // Случайный ответ
-
-    Future.delayed(const Duration(seconds: 1), () {
-      setState(() {
-        _messages.insert(0,
-            "Player: $botMessage"); // Добавляем ответ бота в список сообщений
-      });
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: headInTheClouds, // Устанавливаем светло-розовый фон
+      backgroundColor: Colors.pink[50], // Устанавливаем светло-розовый фон
       appBar: const ChatAppBar(),
       body: Container(
         decoration: const BoxDecoration(
@@ -135,6 +102,7 @@ class NewMessageField extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(25, 10, 10, 40),
       child: Row(
         children: [
+          // Уменьшение ширины TextField путем добавления ограничения ширины
           Expanded(
             flex: 4, // Пропорционально уменьшает ширину TextField в строке
             child: SizedBox(
@@ -144,27 +112,29 @@ class NewMessageField extends StatelessWidget {
                 style: const TextStyle(
                     color: playerDarkBlue), // Цвет вводимого текста
                 decoration: InputDecoration(
-                  labelText: 'Geben Sie Ihre Nachricht ein...',
-                  labelStyle: const TextStyle(color: Colors.lightBlue),
+                  labelText: ' Geben Sie Ihre Nachricht ein...',
+                  labelStyle: const TextStyle(
+                      color: Colors.lightBlue), // Цвет текста placeholder
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12.0),
                     borderSide: const BorderSide(
-                      color: Colors.lightBlue,
-                      width: 2.0,
+                      color: oceanMeditation, // Цвет рамки
+                      width: 2.0, // Толщина рамки
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12.0),
                     borderSide: const BorderSide(
-                      color: Colors.lightBlue,
-                      width: 2.0,
+                      color:
+                          Colors.lightBlue, // Цвет рамки для enabled TextField
+                      width: 2.0, // Толщина рамки
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12.0),
                     borderSide: const BorderSide(
-                      color: Colors.blue,
-                      width: 3.5,
+                      color: Colors.blue, // Цвет рамки при фокусе
+                      width: 3.5, // Толщина рамки при фокусе
                     ),
                   ),
                 ),
@@ -184,18 +154,4 @@ class NewMessageField extends StatelessWidget {
       ),
     );
   }
-}
-
-class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const ChatAppBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      title: const Text("Chat"),
-    );
-  }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
