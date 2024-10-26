@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/config/colors.dart';
 
-class InputNewTextMessageField extends StatelessWidget {
+class InputNewTextMessageField extends StatefulWidget {
   final TextEditingController controller;
   final VoidCallback sendMessage;
 
@@ -10,6 +10,27 @@ class InputNewTextMessageField extends StatelessWidget {
     required this.controller,
     required this.sendMessage,
   });
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _InputNewTextMessageFieldState createState() =>
+      _InputNewTextMessageFieldState();
+}
+
+class _InputNewTextMessageFieldState extends State<InputNewTextMessageField> {
+  late FocusNode _focusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode(); // Инициализация FocusNode
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose(); // Освобождение ресурсов при удалении виджета
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +43,8 @@ class InputNewTextMessageField extends StatelessWidget {
             child: SizedBox(
               height: 60,
               child: TextField(
-                controller: controller,
+                controller: widget.controller,
+                focusNode: _focusNode, // Привязка FocusNode к TextField
                 style: const TextStyle(color: playerDarkBlue),
                 decoration: InputDecoration(
                   labelText: 'Geben Sie Ihre Nachricht ein...',
@@ -49,6 +71,13 @@ class InputNewTextMessageField extends StatelessWidget {
                     ),
                   ),
                 ),
+                // Обработчик события нажатия клавиши Enter
+                onSubmitted: (value) {
+                  widget.sendMessage();
+                  widget.controller
+                      .clear(); // Очищает поле ввода после отправки сообщения
+                  _focusNode.requestFocus(); // Возвращает фокус на поле ввода
+                },
               ),
             ),
           ),
@@ -59,7 +88,12 @@ class InputNewTextMessageField extends StatelessWidget {
               height: 44,
               fit: BoxFit.cover,
             ),
-            onPressed: sendMessage,
+            onPressed: () {
+              widget.sendMessage();
+              widget.controller
+                  .clear(); // Очищает поле ввода после отправки сообщения
+              _focusNode.requestFocus(); // Возвращает фокус на поле ввода
+            },
           ),
         ],
       ),
