@@ -7,7 +7,6 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
   });
 
-  // TODO: implement preferredSize
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
@@ -45,7 +44,13 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
             tooltip: 'Show Snackbar',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text('Zeigt die Anzahl der Spieler online an')));
+                  margin: EdgeInsets.only(
+                    left: 120.0,
+                    right: 120.0,
+                    bottom:
+                        650.0, // Задает отступ от нижнего края (например, высота BottomNavigationBar)
+                  ),
+                  content: Text('   10 Spieler online')));
             },
           ),
         ),

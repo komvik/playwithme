@@ -3,6 +3,7 @@ import 'package:projekt_481_play_with_me/config/font_family.dart';
 import 'package:projekt_481_play_with_me/config/sizes.dart';
 
 import 'package:flutter/material.dart';
+import 'package:projekt_481_play_with_me/config/snack_bar_theme.dart';
 
 ThemeData myTheme = ThemeData(
   useMaterial3: true,
@@ -39,15 +40,17 @@ ThemeData myTheme = ThemeData(
     //Btn Registrieren
     titleLarge: TextStyle(
       fontSize: myTitleSmall,
-      color: btnRegistrieren,
+      color: headInTheClouds,
       fontFamily: myMontserrat.fontFamily,
     ),
     //______________________________________________LABLE L:
     labelLarge: TextStyle(
       fontSize: 16,
-      color: btnRegistrieren,
+      color: headInTheClouds,
       fontFamily: myTeko.fontFamily,
     ),
     //________________________________________ Another Theme
   ),
+//________________
+  snackBarTheme: customSnackBarTheme,
 );
