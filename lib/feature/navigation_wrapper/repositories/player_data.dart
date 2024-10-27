@@ -11,9 +11,9 @@ List<PlayerProfil> players = [
     online: true,
   ),
   PlayerProfil(
-    firstName: "Kobe",
-    lastName: "Bryant",
-    nickName: "Black Mamba",
+    firstName: "Mike",
+    lastName: "Viking",
+    nickName: "MV",
     avatarUrl: "",
     availavility: ['Vielleicht'],
     sendMessage: false,

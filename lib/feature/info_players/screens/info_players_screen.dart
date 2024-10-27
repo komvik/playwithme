@@ -179,7 +179,7 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                         ),
                       ),
                       Text(
-                        "Nickname: ${player.nickName}",
+                        " ${player.nickName}", //Nickname
                         style: const TextStyle(
                           fontSize: 14,
                           fontStyle: FontStyle.italic,
