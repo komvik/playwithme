@@ -129,7 +129,8 @@ class InfoGeneralScreen extends StatelessWidget {
                           width: 30,
                           height: 30,
                           child: Image(
-                              image: AssetImage("assets/icons/icon_home.png")),
+                              image:
+                                  AssetImage("assets/images_courts/JKB.png")),
                         ),
 
                         Row(
@@ -163,7 +164,7 @@ class InfoGeneralScreen extends StatelessWidget {
                                           height: 14,
                                           child: Image(
                                               image: AssetImage(
-                                                  "assets/icons/icon_home.png"))),
+                                                  "assets/images_courts/JKB.png"))),
                                       Text(
                                         "200",
                                         textAlign: TextAlign.center,

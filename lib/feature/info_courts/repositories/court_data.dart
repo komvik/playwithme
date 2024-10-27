@@ -2,23 +2,21 @@ import 'package:projekt_481_play_with_me/feature/info_courts/models/court_item.d
 
 List<Court> courts = [
   Court(
-    name: "Staples Center",
-    locationUrl: "Los Angeles, California",
-    imageUrl: "assets/images/staples_center.png",
+    name: "SLR",
+    locationUrl: "slr",
+    imageUrl: "assets/images_courts/SLR.png",
+    playerCount: 12,
   ),
   Court(
-    name: "Madison Square Garden",
-    locationUrl: "Los Angeles, California",
-    imageUrl: "assets/images/msg.png",
+    name: "JKB",
+    locationUrl: "jkb",
+    imageUrl: "assets/images_courts/JKB.png",
+    playerCount: 10,
   ),
   Court(
-    name: "TD Garden",
-    locationUrl: "Los Angeles, California",
-    imageUrl: "assets/images/td_garden.png",
-  ),
-  Court(
-    name: "United Center",
-    locationUrl: "Los Angeles, California",
-    imageUrl: "assets/images/united_center.png",
+    name: "SDH",
+    locationUrl: "sdh",
+    imageUrl: "assets/images_courts/SDH.png",
+    playerCount: 0,
   ),
 ];
