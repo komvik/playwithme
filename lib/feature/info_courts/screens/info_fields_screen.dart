@@ -15,12 +15,12 @@ class InfoFieldsScreen extends StatelessWidget {
         Container(
           color: const Color.fromARGB(113, 0, 0, 0),
           width: 400,
-          height: 380,
+          height: 350,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "  Spielinformationen",
+                "     Platzinformation",
                 style: Theme.of(context)
                     .textTheme
                     .titleSmall
@@ -34,8 +34,7 @@ class InfoFieldsScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final court = courts[index];
                     return Container(
-                      color:
-                          getColorForCourt(index), // Use two colors for courts
+                      color: getColorForCourt(index),
                       margin: const EdgeInsets.symmetric(
                           vertical: 4, horizontal: 16),
                       padding: const EdgeInsets.all(16),
@@ -51,7 +50,7 @@ class InfoFieldsScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "Location URL: ${court.locationUrl}",
+                            "Standort: ${court.locationUrl}",
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium
@@ -79,22 +78,21 @@ class InfoFieldsScreen extends StatelessWidget {
         Container(
           color: const Color.fromARGB(62, 0, 0, 0),
           width: 400,
-          height: 280, // Height of the card container
+          height: 280,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.all(8),
-            itemCount: courts.length, // Dynamic length based on courts list
+            itemCount: courts.length,
             itemBuilder: (BuildContext context, int index) {
               final court = courts[index];
               return GestureDetector(
                 onTap: () {
-                  // Show modal bottom sheet on card tap
                   showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,
                     builder: (context) {
                       return FractionallySizedBox(
-                        heightFactor: 0.7, // Sets modal height to 70% of screen
+                        heightFactor: 0.7,
                         child: Container(
                           decoration: const BoxDecoration(
                             gradient: LinearGradient(
@@ -109,7 +107,6 @@ class InfoFieldsScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              // Court name and location URL at the top
                               Padding(
                                 padding: const EdgeInsets.all(16.0),
                                 child: Column(
@@ -133,13 +130,11 @@ class InfoFieldsScreen extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              // Centered image without side padding
                               Expanded(
                                 child: Image.asset(
                                   court.imageUrl,
-                                  width: double.infinity, // Full width
-                                  fit: BoxFit
-                                      .cover, // Scales the image to cover the entire space
+                                  width: double.infinity,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
                             ],
@@ -151,8 +146,8 @@ class InfoFieldsScreen extends StatelessWidget {
                 },
                 child: Container(
                   margin: const EdgeInsets.fromLTRB(0, 0, 25, 0),
-                  width: 280, // Width of the card
-                  height: 260, // Height of the card
+                  width: 280,
+                  height: 260,
                   child: Card(
                     clipBehavior: Clip.hardEdge,
                     shape: RoundedRectangleBorder(
@@ -161,12 +156,10 @@ class InfoFieldsScreen extends StatelessWidget {
                     child: Stack(
                       fit: StackFit.expand,
                       children: [
-                        // Full-size image
                         Image.asset(
                           court.imageUrl,
                           fit: BoxFit.cover,
                         ),
-                        // Court name overlay
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
@@ -189,16 +182,85 @@ class InfoFieldsScreen extends StatelessWidget {
             },
           ),
         ),
-        Text(
-          " Lege meinen Status fest",
-          style: Theme.of(context).textTheme.labelLarge,
+
+        // Button to create a new basketball court
+        ElevatedButton(
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              builder: (BuildContext context) {
+                return const CreateCourtWidget();
+              },
+            );
+          },
+          child: Text(
+            "Neue Basketballplatz erstellen",
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: teakwood,
+                ),
+          ),
         ),
       ],
     );
   }
 
-  // Method to return a color for each court based on the index (even and odd)
   Color getColorForCourt(int index) {
     return index % 2 == 0 ? headInTheClouds : silkenTofu;
+  }
+}
+
+// Separate widget for creating a new court
+class CreateCourtWidget extends StatelessWidget {
+  const CreateCourtWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Neuen Basketballplatz erstellen",
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+          const SizedBox(height: 16),
+          const TextField(
+            decoration: InputDecoration(labelText: "Name des Platzes"),
+          ),
+          const SizedBox(height: 8),
+          const TextField(
+            decoration: InputDecoration(labelText: "Standort "),
+          ),
+          const SizedBox(height: 8),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text("Platz Foto"),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text("Google Standort"),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("Platz hinzufügen"),
+          ),
+        ],
+      ),
+    );
   }
 }
