@@ -6,16 +6,16 @@ List<Game> games = [
   Game(
     court: courts[0],
     team: [
-      playersProfil[0],
-      playersProfil[3],
+      players[0],
+      players[3],
     ],
     gameDate: DateTime.parse("2024-11-15 19:30:00"),
   ),
   Game(
     court: courts[0],
     team: [
-      playersProfil[0],
-      playersProfil[3],
+      players[0],
+      players[3],
     ],
     gameDate: DateTime.parse("2024-11-15 19:30:00"),
   ),
