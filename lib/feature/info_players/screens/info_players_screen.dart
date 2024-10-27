@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projekt_481_play_with_me/feature/navigation_wrapper/repositories/player_data.dart';
-import '../../navigation_wrapper/models/player_item.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/repositories/player_data.dart';
+import '../models/player_item.dart';
 
 class InfoPlayersScreen extends StatefulWidget {
   const InfoPlayersScreen({super.key});

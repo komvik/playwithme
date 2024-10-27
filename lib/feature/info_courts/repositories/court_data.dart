@@ -1,4 +1,4 @@
-import 'package:projekt_481_play_with_me/feature/navigation_wrapper/models/court_item.dart';
+import 'package:projekt_481_play_with_me/feature/info_courts/models/court_item.dart';
 
 List<Court> courts = [
   Court(

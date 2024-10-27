@@ -1,4 +1,4 @@
-import 'package:projekt_481_play_with_me/feature/navigation_wrapper/models/player_item.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/models/player_item.dart';
 
 List<PlayerProfil> players = [
   PlayerProfil(
