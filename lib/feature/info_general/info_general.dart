@@ -152,7 +152,7 @@ class InfoGeneralScreen extends StatelessWidget {
 
         const SizedBox(height: 16),
 
-        // Здесь можно добавить дополнительную секцию, если это необходимо
+        // Hier können Sie bei Bedarf einen zusätzlichen Abschnitt hinzufügen
       ],
     );
   }

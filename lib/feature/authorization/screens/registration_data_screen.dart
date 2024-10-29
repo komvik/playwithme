@@ -54,7 +54,7 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                   iconSize: 48,
                   icon: const Icon(Icons.photo_library, color: Colors.blue),
                   onPressed: _pickImage, // Вызов функции для выбора изображения
-                  tooltip: 'Выбрать фото из галереи',
+                  tooltip: 'Wählen Sie ein Foto aus der Galerie aus',
                 ),
               ),
               const Positioned(
