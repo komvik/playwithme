@@ -11,6 +11,14 @@ dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.14.1
   flutter_native_splash: ^2.4.1
+  google_fonts: ^6.2.1
+ # firebase_core: ^3.6.0
+ # firebase_auth: ^5.3.1
+ # cloud_firestore: ^5.4.4
+ # provider: ^6.1.2
+  image_picker: ^0.8.4+4
+  intl: ^0.17.0
+
 
 
 dev_dependencies:
@@ -20,8 +28,15 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+   - assets/images/
+   - assets/images_avatar/
+   - assets/images_courts/
+   - assets/icons/
+   - assets/icons_chat/
+  
 
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: assets/icon/icon_ball_djk.png
+  image_path: assets/icons/

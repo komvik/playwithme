@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projekt_481_play_with_me/config/theme.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/screens/authorization_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +11,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Start Projekt play with me'),
-        ),
-      ),
+    return MaterialApp(
+      title: "Willkommen,\nSpiel mit uns",
+      theme: myTheme,
+      home: const AuthorizationScreen(),
     );
   }
 }
