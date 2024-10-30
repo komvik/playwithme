@@ -45,20 +45,20 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
               const EdgeInsets.only(top: 130, bottom: 0, left: 0, right: 0),
           child: Form(
             child: Stack(
-              children: const <Widget>[
+              children: <Widget>[
                 Positioned(
                   top: 1,
                   left: 320,
                   child: IconButton(
                     iconSize: 48,
-                    icon: Icon(Icons.photo_library, color: Colors.blue),
+                    icon: const Icon(Icons.photo_library, color: Colors.blue),
                     onPressed:
                         _pickImage, // Вызов функции для выбора изображения
                     tooltip: 'Wählen Sie ein Foto aus der Galerie aus',
                   ),
                 ),
                 // Text oben
-                Positioned(
+                const Positioned(
                   top: 2,
                   left: 110,
                   child: Text("Erstelle deinen eigenen Avatar"),
@@ -107,7 +107,7 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                 //==============================================================
                 //===========================================  Begin TextFields
                 //____________________________ name
-                 Positioned(
+                const Positioned(
                   top: 310,
                   left: 40,
                   right: 40,
@@ -115,39 +115,14 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                     decoration: InputDecoration(
                       label: Text("Name"),
                       labelStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                      border: OutlineInputBorder(
-
-
+                        color: Colors.white,
+                        fontSize: 18,
                       ),
                     ),
                   ),
-                ),
-                //____________________________ Nachname
-                Positioned(
-                  top: 360,
-                  left: 40,
-                  right: 40,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      label: Text("Name"),
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                ),
+                  //____________________________ Nachname
 
-                //____________________________ Spitzname optionl
-                Positioned(
-                  top: 410,
-                  left: 40,
-                  right: 40,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      label: Text("Name"),
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
+                  //____________________________ Spitzname optionl
                 ),
               ],
             ),
