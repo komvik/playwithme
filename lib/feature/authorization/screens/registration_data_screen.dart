@@ -1,3 +1,4 @@
+//import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 //import 'package:projekt_481_play_with_me/feature/authorization/screens/authorization_screen.dart';
@@ -15,16 +16,26 @@ class RegistrationDataScreen extends StatefulWidget {
 class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
   // Variable to store the selected avatar
   String _selectedAvatar = 'assets/images_avatar/avatar1.png'; // Default
+// Brauchen wir, damit wir alle TextFormFields validieren können
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final ImagePicker _picker = ImagePicker(); // Инициализация ImagePicker
+  final ImagePicker _picker = ImagePicker();
 
+  // choose a new avatar or image
   Future<void> _pickImage() async {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
       setState(() {
-        _selectedAvatar = image.path; // Обновление выбранного изображения
+        _selectedAvatar = image.path;
       });
     }
+  }
+
+//_______________ Valid Name Nachname Spitzname
+  String? isValidText(String? value) {
+    if (value == null || value.isEmpty) return "Bitte ein text angeben";
+    if (value.length < 4) return "text is to short (4 chars minimum)";
+    return null;
   }
 
   @override
@@ -44,6 +55,7 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
           padding:
               const EdgeInsets.only(top: 130, bottom: 0, left: 0, right: 0),
           child: Form(
+            key: _formKey,
             child: Stack(
               children: <Widget>[
                 Positioned(
@@ -106,23 +118,86 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                 ),
                 //==============================================================
                 //===========================================  Begin TextFields
-                //____________________________ name
-                const Positioned(
-                  top: 310,
+
+                //____________________________ Name
+                Positioned(
+                  top: 250,
                   left: 40,
                   right: 40,
-                  child: TextField(
-                    decoration: InputDecoration(
+                  child: TextFormField(
+                    decoration: const InputDecoration(
                       label: Text("Name"),
                       labelStyle: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                       ),
                     ),
+                    validator: isValidText,
                   ),
-                  //____________________________ Nachname
-
-                  //____________________________ Spitzname optionl
+                ),
+                //____________________________ Nachname
+                Positioned(
+                  top: 310,
+                  left: 40,
+                  right: 40,
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      label: Text("Nachname"),
+                      labelStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                    ),
+                    validator: isValidText,
+                  ),
+                ),
+                //____________________________ Spitzname
+                Positioned(
+                  top: 370,
+                  left: 40,
+                  right: 40,
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      label: Text("Spitzname"),
+                      labelStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                    ),
+                    validator: isValidText,
+                  ),
+                ),
+                Positioned(
+                  top: 570,
+                  left: 145,
+                  right: 110,
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: Colors.transparent),
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Center(
+                                child: Text("Daten erfolgreich gespeichert.")),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            margin: EdgeInsets.only(bottom: 70.0),
+                            content: Center(
+                                child: Text("Daten müssen korrigiert werden.")),
+                          ),
+                        );
+                      }
+                    },
+                    child: const Text(
+                      "Speichern",
+                      style: TextStyle(fontSize: 28),
+                    ),
+                  ),
                 ),
               ],
             ),
