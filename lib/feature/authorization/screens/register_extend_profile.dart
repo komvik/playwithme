@@ -168,7 +168,7 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                   ),
                 ),
                 Positioned(
-                  top: 570,
+                  top: 635,
                   left: 145,
                   right: 110,
                   child: OutlinedButton(
@@ -195,7 +195,7 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                     },
                     child: const Text(
                       "Speichern",
-                      style: TextStyle(fontSize: 28),
+                      style: TextStyle(fontSize: 40),
                     ),
                   ),
                 ),

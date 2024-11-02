@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/screens/registration_screen.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/screens/register_create_profile.dart';
+
+//  the "Registrieren" button belongs to the "authorization_screen"
 
 class ButtonRegistrieren extends StatelessWidget {
   const ButtonRegistrieren({

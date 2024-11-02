@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/screens/registration_data_screen.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/screens/register_extend_profile.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/create_input_text_field.dart';
 
-class RegistrationScreen extends StatelessWidget {
+class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});
 
+  @override
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
+}
+
+class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
