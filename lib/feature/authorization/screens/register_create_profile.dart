@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/repositories/repo_to_all_text_form_fields.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/screens/register_extend_profile.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/widgets/info_to_all_text_form_fields.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/widgets/information_error_icon_button.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/validate_functions_to_all_t_f_f.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -45,32 +45,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         //================================================ LOGIN
                         Row(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 25),
-                              child: SizedBox(
-                                width: 80,
-                                height: 60,
-                                child: loginError != null
-                                    ? IconButton(
-                                        onPressed: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return ShowInfoTextDialog(
-                                                message: loginError!,
-                                                fieldName: fields[0].fieldName,
-                                                dialogContent:
-                                                    fields[0].dialogContext,
-                                              );
-                                            },
-                                          );
-                                        },
-                                        icon: const Icon(Icons.info),
-                                        iconSize: 40,
-                                        color: Colors.white,
-                                      )
-                                    : null, // If there is no error, the icon is not displayed.
-                              ),
+                            InformationErrorIconButton(
+                              errorMessage: loginError,
+                              fieldName: fields[0].fieldName,
+                              dialogContent: fields[0].dialogContext,
                             ),
                             SizedBox(
                               width: 270,
@@ -150,32 +128,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         //=================================================== PASSWORD
                         Row(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 25),
-                              child: SizedBox(
-                                width: 80,
-                                height: 60,
-                                child: passwordError != null
-                                    ? IconButton(
-                                        onPressed: () {
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return ShowInfoTextDialog(
-                                                message: passwordError!,
-                                                fieldName: fields[1].fieldName,
-                                                dialogContent:
-                                                    fields[1].dialogContext,
-                                              );
-                                            },
-                                          );
-                                        },
-                                        icon: const Icon(Icons.info),
-                                        iconSize: 40,
-                                        color: Colors.white,
-                                      )
-                                    : null, // If there is no error, the icon is not displayed.
-                              ),
+                            InformationErrorIconButton(
+                              errorMessage: passwordError,
+                              fieldName: fields[1].fieldName,
+                              dialogContent: fields[1].dialogContext,
                             ),
                             SizedBox(
                               width: 270,
