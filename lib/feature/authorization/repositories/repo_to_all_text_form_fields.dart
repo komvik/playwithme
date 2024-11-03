@@ -24,6 +24,14 @@ final List<FieldInfo> fields = [
         '20. Password.',
   ),
   FieldInfo(
+    fieldName: "Password confirm",
+    dialogContext: '1. .\n'
+        '2. .\n'
+        '3. .\n'
+        '...\n'
+        '20. Password confirm.',
+  ),
+  FieldInfo(
     fieldName: "E-mail",
     dialogContext: '1. .\n'
         '2. .\n'

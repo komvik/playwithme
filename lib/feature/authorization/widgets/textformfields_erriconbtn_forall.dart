@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/widgets/info_to_all_text_form_fields.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_allertdialog_forall.dart';
 
 class InformationErrorIconButton extends StatelessWidget {
   final String? errorMessage;
