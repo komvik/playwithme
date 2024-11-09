@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/button_registrieren.dart';
 import 'package:projekt_481_play_with_me/feature/navigation_wrapper/screens/navigation_wrapper.dart';
 
+/// todo:
+/// auslogen info for all TextFormFields
+/// logik anschrauben  mit enum [login Pass ezt]
+/// abrufen bei name name -> == num von List Fehler!
+///
 class AuthorizationScreen extends StatefulWidget {
   const AuthorizationScreen({super.key});
 
@@ -85,15 +90,11 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                 Text(message),
                 const SizedBox(height: 20),
                 const Text(
-                  'Дополнительная информация:\n'
-                  '1. Здесь могут быть другие строки текста.\n'
-                  '2. Включите дополнительные инструкции или предупреждения.\n'
-                  '3. Данный текст может занимать множество строк, чтобы предоставить пользователю всю необходимую информацию.\n'
-                  '4. Сохраняйте простоту и четкость.\n'
-                  '5. Избегайте перегрузки информации.\n'
-                  '6. Строки 7-20 здесь могут содержать другую информацию, чтобы заполнить текстовый блок.\n'
+                  'Infofrmation for beginer:\n'
+                  '1. Lorem ipsum .\n'
+                  '2. Lorem ipsum .\n'
                   '...\n'
-                  '20. Последняя строка.',
+                  '20. Last event.',
                   style: TextStyle(fontSize: 14),
                 ),
               ],
@@ -101,9 +102,9 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text("Закрыть"),
+              child: const Text("Closeь"),
               onPressed: () {
-                Navigator.of(context).pop(); // Закрываем диалог
+                Navigator.of(context).pop();
               },
             ),
           ],
@@ -230,7 +231,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                         //===================================================
 
                         const SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         //=================================================== PASSWORD
 

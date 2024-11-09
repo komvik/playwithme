@@ -48,7 +48,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     left: -10,
                     child: Column(
                       children: [
-                        //================================================ LOGIN
+                        //========================= LOGIN
                         Row(
                           children: [
                             InformationErrorIconButton(
@@ -70,8 +70,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             ),
                           ],
                         ),
-                        //=============================
-                        //============================================= PASSWORD
+                        //========================= PASSWORD
                         Row(
                           children: [
                             InformationErrorIconButton(
@@ -94,8 +93,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             ),
                           ],
                         ),
-
-                        //=============================== PASSWORD CONFIRM
+                        //========================== PASSWORD CONFIRM
                         Row(
                           children: [
                             InformationErrorIconButton(
@@ -118,7 +116,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             ),
                           ],
                         ),
-                        //============================== EMAIL
+                        //=========================== EMAIL
                         Row(
                           children: [
                             InformationErrorIconButton(

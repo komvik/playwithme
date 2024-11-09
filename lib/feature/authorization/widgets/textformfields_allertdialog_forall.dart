@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ShowInfoTextDialog extends StatelessWidget {
   final String message;
   final String fieldName;
-  final String dialogContent;
+  final String dialogContent; // ist implements String
 
   const ShowInfoTextDialog({
     super.key,
