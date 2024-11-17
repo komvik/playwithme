@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const double myDisplaySmall = 28;
-const double myDisplayMedium = 36;
+const double myDisplayMedium = 32;
 const double myDisplayLarge = 38;
 
 const double myTitleSmall = 18;

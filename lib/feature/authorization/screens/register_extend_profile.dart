@@ -1,9 +1,7 @@
-//import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-//import 'package:projekt_481_play_with_me/feature/authorization/screens/authorization_screen.dart';
-//import 'package:projekt_481_play_with_me/feature/authorization/widgets/create_input_text_field.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/repositories/avatar_images.dart';
+import 'package:projekt_481_play_with_me/feature/navigation_wrapper/screens/navigation_wrapper.dart';
 
 class RegistrationDataScreen extends StatefulWidget {
   const RegistrationDataScreen({super.key});
@@ -168,9 +166,8 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                   ),
                 ),
                 Positioned(
-                  top: 635,
-                  left: 145,
-                  right: 110,
+                  top: 570,
+                  left: 130,
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Colors.transparent),
@@ -183,6 +180,8 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                                 child: Text("Daten erfolgreich gespeichert.")),
                           ),
                         );
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const NavigationWrapper()));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
@@ -193,9 +192,9 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                         );
                       }
                     },
-                    child: const Text(
+                    child: Text(
                       "Speichern",
-                      style: TextStyle(fontSize: 40),
+                      style: Theme.of(context).textTheme.displayMedium,
                     ),
                   ),
                 ),
