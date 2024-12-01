@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/models/player_profile.dart';
 import 'package:projekt_481_play_with_me/feature/info_players/repositories/player_data.dart';
-import '../models/player_item.dart';
 
 class InfoPlayersScreen extends StatefulWidget {
   const InfoPlayersScreen({super.key});
@@ -55,12 +55,12 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                       onChanged: player.online
                           ? (bool? value) {
                               setState(() {
-                                players[index] = PlayerProfil(
+                                players[index] = PlayerProfile(
                                   firstName: player.firstName,
                                   lastName: player.lastName,
                                   nickName: player.nickName,
                                   avatarUrl: player.avatarUrl,
-                                  availavility: player.availavility,
+                                  availability: player.availability,
                                   sendMessage: value ?? false,
                                   online: player.online,
                                 );
@@ -104,13 +104,13 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
 
                                               // After sending the message, return the checkbox to the false state
                                               setState(() {
-                                                players[index] = PlayerProfil(
+                                                players[index] = PlayerProfile(
                                                   firstName: player.firstName,
                                                   lastName: player.lastName,
                                                   nickName: player.nickName,
                                                   avatarUrl: player.avatarUrl,
-                                                  availavility:
-                                                      player.availavility,
+                                                  availability:
+                                                      player.availability,
                                                   sendMessage:
                                                       false, // Return the checkbox state to false
                                                   online: player.online,
@@ -126,13 +126,13 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                                             onPressed: () {
                                               // Return the checkbox to false when canceled
                                               setState(() {
-                                                players[index] = PlayerProfil(
+                                                players[index] = PlayerProfile(
                                                   firstName: player.firstName,
                                                   lastName: player.lastName,
                                                   nickName: player.nickName,
                                                   avatarUrl: player.avatarUrl,
-                                                  availavility:
-                                                      player.availavility,
+                                                  availability:
+                                                      player.availability,
                                                   sendMessage:
                                                       false, // Reset checkbox state
                                                   online: player.online,
@@ -190,7 +190,7 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                       const SizedBox(height: 4),
                       Wrap(
                         spacing: 4,
-                        children: player.availavility.map((status) {
+                        children: player.availability.map((status) {
                           return Chip(
                             label: Text(
                               status,

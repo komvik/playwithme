@@ -1,120 +1,120 @@
-import 'package:projekt_481_play_with_me/feature/info_players/models/player_item.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/models/player_profile.dart';
 
-List<PlayerProfil> players = [
-  PlayerProfil(
+List<PlayerProfile> players = [
+  PlayerProfile(
     firstName: "Michael",
     lastName: "Jordan",
     nickName: "MJ",
     avatarUrl: "",
-    availavility: ['Ja'],
+    availability: ['Ja'],
     sendMessage: false,
     online: true,
   ),
-  PlayerProfil(
+  PlayerProfile(
     firstName: "Mike",
     lastName: "Viking",
     nickName: "MV",
     avatarUrl: "",
-    availavility: ['Vielleicht'],
+    availability: ['Vielleicht'],
     sendMessage: false,
     online: false,
   ),
-  PlayerProfil(
+  PlayerProfile(
     firstName: "Shaquille",
     lastName: "O'Neal",
     nickName: "Shaq",
     avatarUrl: "",
-    availavility: ['Ja'],
+    availability: ['Ja'],
     sendMessage: false,
     online: true,
   ),
-  PlayerProfil(
+  PlayerProfile(
     firstName: "Dražen ",
     lastName: "Petrović",
     nickName: "Basketball-Mozart",
     avatarUrl: "",
-    availavility: ['Nein'],
+    availability: ['Nein'],
     sendMessage: false,
     online: false,
   ),
-  PlayerProfil(
+  PlayerProfile(
     firstName: "Stephen",
     lastName: "Curry",
     nickName: "Chef Curry",
     avatarUrl: "",
-    availavility: ['Nein'],
+    availability: ['Nein'],
     sendMessage: false,
     online: false,
   ),
-  PlayerProfil(
+  PlayerProfile(
     firstName: "Toni",
     lastName: "Kukoč ",
     nickName: "Die kroatische Sensation",
     avatarUrl: "",
-    availavility: ['Nein'],
+    availability: ['Nein'],
     sendMessage: false,
     online: false,
   ),
-  PlayerProfil(
+  PlayerProfile(
     firstName: "Dino",
     lastName: "Rađa",
     nickName: "König von Split",
     avatarUrl: "",
-    availavility: ['Vielleicht'],
+    availability: ['Vielleicht'],
     sendMessage: false,
     online: true,
   ),
-  PlayerProfil(
+  PlayerProfile(
     firstName: "Kevin",
     lastName: "Durant",
     nickName: "KD",
     avatarUrl: "",
-    availavility: ['Vielleicht'],
+    availability: ['Vielleicht'],
     sendMessage: false,
     online: true,
   ),
-  PlayerProfil(
+  PlayerProfile(
     firstName: "Giannis",
     lastName: "Antetokounmpo",
     nickName: "Greek Freak",
     avatarUrl: "assets/images/antetokounmpo.png",
-    availavility: ['Ja'],
+    availability: ['Ja'],
     sendMessage: false,
     online: true,
   ),
-  PlayerProfil(
+  PlayerProfile(
     firstName: "James",
     lastName: "Harden",
     nickName: "The Beard",
     avatarUrl: "",
-    availavility: ['Vielleicht'],
+    availability: ['Vielleicht'],
     sendMessage: false,
     online: false,
   ),
-  PlayerProfil(
+  PlayerProfile(
     firstName: "Dirk",
     lastName: "Nowitzki",
     nickName: "Wunderkind",
     avatarUrl: "",
-    availavility: ['Nein'],
+    availability: ['Nein'],
     sendMessage: false,
     online: true,
   ),
-  PlayerProfil(
+  PlayerProfile(
     firstName: "Tim",
     lastName: "Duncan",
     nickName: "The Big Fundamental",
     avatarUrl: "",
-    availavility: ['Vielleicht'],
+    availability: ['Vielleicht'],
     sendMessage: false,
     online: false,
   ),
-  PlayerProfil(
+  PlayerProfile(
     firstName: "Magic",
     lastName: "Johnson",
     nickName: "Magic",
     avatarUrl: "",
-    availavility: ['Ja'],
+    availability: ['Ja'],
     sendMessage: false,
     online: true,
   ),

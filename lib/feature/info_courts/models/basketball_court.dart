@@ -1,8 +1,6 @@
 import 'dart:developer';
-
-import 'package:projekt_481_play_with_me/feature/info_courts/repositories/database_repository_%20court.dart';
-
-import '../../authorization/models/player.dart';
+import 'package:projekt_481_play_with_me/feature/info_courts/repositories/database_repository_court.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/models/player.dart';
 
 class BasketballCourt {
   String name;

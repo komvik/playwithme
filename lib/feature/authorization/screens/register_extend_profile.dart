@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/repositories/avatar_images.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/repositories/player_avatar_images.dart';
 import 'package:projekt_481_play_with_me/feature/navigation_wrapper/screens/navigation_wrapper.dart';
 
 class RegistrationDataScreen extends StatefulWidget {
