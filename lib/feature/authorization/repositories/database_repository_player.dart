@@ -1,7 +1,7 @@
-import 'package:projekt_481_play_with_me/feature/info_players/models/player_profile.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/models/player.dart';
 
 abstract class DatabaseRepositoryPlayer {
-  Future<void> addPlayer(PlayerProfile player);
+  Future<void> addPlayer(Player player);
   Future<void> deletePlayer(String login);
-  Future<PlayerProfile?> getPlayerByLogin(String login);
+  Future<Player?> getPlayerByLogin(String login);
 }

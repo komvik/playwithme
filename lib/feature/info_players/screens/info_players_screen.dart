@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projekt_481_play_with_me/feature/info_players/models/player_profile.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/models/player.dart';
 import 'package:projekt_481_play_with_me/feature/info_players/repositories/player_data.dart';
 
 class InfoPlayersScreen extends StatefulWidget {
@@ -55,7 +55,7 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                       onChanged: player.online
                           ? (bool? value) {
                               setState(() {
-                                players[index] = PlayerProfile(
+                                players[index] = Player(
                                   firstName: player.firstName,
                                   lastName: player.lastName,
                                   nickName: player.nickName,
@@ -104,7 +104,7 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
 
                                               // After sending the message, return the checkbox to the false state
                                               setState(() {
-                                                players[index] = PlayerProfile(
+                                                players[index] = Player(
                                                   firstName: player.firstName,
                                                   lastName: player.lastName,
                                                   nickName: player.nickName,
@@ -126,7 +126,7 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                                             onPressed: () {
                                               // Return the checkbox to false when canceled
                                               setState(() {
-                                                players[index] = PlayerProfile(
+                                                players[index] = Player(
                                                   firstName: player.firstName,
                                                   lastName: player.lastName,
                                                   nickName: player.nickName,

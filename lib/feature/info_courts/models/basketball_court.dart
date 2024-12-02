@@ -16,13 +16,13 @@ class BasketballCourt {
       schedule[time] = [];
     }
     schedule[time]?.add(player);
-    log("${player.login} will play at $name on $time.");
+    log("${player.eMail} will play at $name on $time.");
   }
 
   // Get information: See who is playing at what time
   void getPlayersAtTime(String time) {
     if (schedule.containsKey(time)) {
-      log("\nPlayers playing at $name on $time: ${schedule[time]?.map((p) => p.login).join(', ')}\n");
+      log("\nPlayers playing at $name on $time: ${schedule[time]?.map((p) => p.eMail).join(', ')}\n");
     } else {
       log("No players scheduled for $time at $name.");
     }
@@ -31,7 +31,7 @@ class BasketballCourt {
   // Plan future games
   void planFutureGame(Player player, String time) {
     indicatePlayTime(player, time);
-    log("${player.login} planned a future game at $name on $time.");
+    log("${player.eMail} planned a future game at $name on $time.");
   }
 
   // Save or update the court in the repository

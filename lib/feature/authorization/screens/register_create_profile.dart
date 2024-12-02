@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/logic/validate_functions_to_all_t_f_f.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/repositories/all_errorinfo_textform.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/screens/register_extend_profile.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_erriconbtn_forall.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_universalform_forall.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/functions/validate_func_forall_textfields.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({super.key});

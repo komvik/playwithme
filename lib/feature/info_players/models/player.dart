@@ -1,7 +1,3 @@
-import 'package:projekt_481_play_with_me/feature/authorization/models/auth_service.dart';
-import 'package:projekt_481_play_with_me/feature/info_players/models/player_auth.dart';
-import 'package:projekt_481_play_with_me/feature/info_players/models/player_profile.dart';
-
 // class PLAYER uses 3 classes
 
 // authorization :
@@ -14,23 +10,29 @@ import 'package:projekt_481_play_with_me/feature/info_players/models/player_prof
 // - loguut
 // - isAuthenticated
 class Player {
-  final PlayerAuth auth;
-  final PlayerProfile profile;
+  final String userId;
+  final String firstName;
+  final String lastName;
+  final String nickName;
+  final String userName;
+  final String eMail;
+  final String password;
+  final String avatarUrl;
+  final List<String> availability;
+  final bool sendMessage;
+  final bool online;
 
   Player({
-    required this.auth,
-    required this.profile,
+    this.userId = "",
+    this.userName = "",
+    this.eMail = "",
+    this.password = "",
+    required this.firstName,
+    required this.lastName,
+    this.nickName = "Keine",
+    this.avatarUrl = "assets/images_avatar/avatar1.png",
+    this.availability = const ['Ja', 'Vielleicht', 'Nein'],
+    this.sendMessage = false,
+    this.online = false,
   });
-
-  bool login() {
-    return AuthService().authenticate(auth);
-  }
-
-  void logout() {
-    AuthService().logout(auth);
-  }
-
-  bool logged() {
-    return AuthService().isAuthenticated(auth);
-  }
 }

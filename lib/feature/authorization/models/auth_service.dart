@@ -1,24 +1,20 @@
-import 'package:projekt_481_play_with_me/feature/info_players/models/player_auth.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/models/player.dart';
 
 class AuthService {
   //___________________________________________________________
-  bool authenticate(PlayerAuth auth) {
+  bool authenticate(Player auth) {
     // hier db lesen logic
-    if (auth.username == 'user' && auth.password == '123') {
-      auth.authToken = 'user123'; //function generiert token
+    if (auth.userName == 'MiJ' && auth.password == '123') {
       return true;
     }
     return false;
   }
 
   //__________________________________________________________
-  void logout(PlayerAuth auth) {
-    // logic
-    auth.authToken = '';
-  }
+  void logout(Player auth) {}
 
   //__________________________________________
-  bool isAuthenticated(PlayerAuth auth) {
-    return auth.authToken != null;
+  bool isAuthenticated(Player auth) {
+    return true;
   }
 }

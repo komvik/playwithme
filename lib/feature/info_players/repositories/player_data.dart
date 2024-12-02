@@ -1,79 +1,85 @@
-import 'package:projekt_481_play_with_me/feature/info_players/models/player_profile.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/models/player.dart';
 
-List<PlayerProfile> players = [
-  PlayerProfile(
+List<Player> players = [
+  Player(
     userId: "",
     firstName: "Michael",
     lastName: "Jordan",
     nickName: "MJ",
     userName: "MiJ",
     eMail: "",
+    password: "",
     avatarUrl: "",
     availability: ['Ja'],
     sendMessage: false,
     online: true,
   ),
-  PlayerProfile(
+  Player(
     userId: "",
     firstName: "Mike",
     lastName: "Viking",
     nickName: "MV",
     userName: "MiV",
     eMail: "",
+    password: "",
     avatarUrl: "",
     availability: ['Vielleicht'],
     sendMessage: false,
     online: false,
   ),
-  PlayerProfile(
+  Player(
     userId: "",
     firstName: "Shaquille",
     lastName: "O'Neal",
     nickName: "Shaq",
     userName: "ShQ",
     eMail: "",
+    password: "",
     avatarUrl: "",
     availability: ['Ja'],
     sendMessage: false,
     online: true,
   ),
-  PlayerProfile(
+  Player(
     userId: "",
     firstName: "Dražen ",
     lastName: "Petrović",
     nickName: "Basketball-Mozart",
     userName: "BsM",
     eMail: "",
+    password: "",
     avatarUrl: "",
     availability: ['Nein'],
     sendMessage: false,
     online: false,
   ),
-  PlayerProfile(
+  Player(
     userId: "",
     firstName: "Stephen",
     lastName: "Curry",
     nickName: "Chef Curry",
     userName: "ChC",
     eMail: "",
+    password: "",
     avatarUrl: "",
     availability: ['Nein'],
     sendMessage: false,
     online: false,
   ),
-  PlayerProfile(
+  Player(
     userId: "",
     firstName: "Toni",
     lastName: "Kukoč ",
     nickName: "Die kroatische Sensation",
     userName: "DkS",
     eMail: "",
+    password: "",
     avatarUrl: "",
     availability: ['Nein'],
     sendMessage: false,
     online: false,
   ),
-  PlayerProfile(
+  Player(
     userId: "",
     firstName: "Dino",
     lastName: "Rađa",
@@ -85,19 +91,20 @@ List<PlayerProfile> players = [
     sendMessage: false,
     online: true,
   ),
-  PlayerProfile(
+  Player(
     userId: "",
     firstName: "Kevin",
     lastName: "Durant",
     nickName: "KD",
     userName: "KeD",
     eMail: "",
+    password: "",
     avatarUrl: "",
     availability: ['Vielleicht'],
     sendMessage: false,
     online: true,
   ),
-  PlayerProfile(
+  Player(
     userId: "",
     firstName: "Giannis",
     lastName: "Antetokounmpo",
@@ -109,19 +116,20 @@ List<PlayerProfile> players = [
     sendMessage: false,
     online: true,
   ),
-  PlayerProfile(
+  Player(
     userId: "",
     firstName: "James",
     lastName: "Harden",
     nickName: "The Beard",
     userName: "ThB",
     eMail: "",
+    password: "",
     avatarUrl: "",
     availability: ['Vielleicht'],
     sendMessage: false,
     online: false,
   ),
-  PlayerProfile(
+  Player(
     userId: "",
     firstName: "Dirk",
     lastName: "Nowitzki",
@@ -133,25 +141,27 @@ List<PlayerProfile> players = [
     sendMessage: false,
     online: true,
   ),
-  PlayerProfile(
+  Player(
     userId: "",
     firstName: "Tim",
     lastName: "Duncan",
     nickName: "The Big Fundamental",
     userName: "TbF",
     eMail: "",
+    password: "",
     avatarUrl: "",
     availability: ['Vielleicht'],
     sendMessage: false,
     online: false,
   ),
-  PlayerProfile(
+  Player(
     userId: "",
     firstName: "Magic",
     lastName: "Johnson",
     nickName: "Magic",
     userName: "MaG",
     eMail: "",
+    password: "",
     avatarUrl: "",
     availability: ['Ja'],
     sendMessage: false,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/logic/validate_functions_to_all_t_f_f.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/repositories/database_repository_player.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/repositories/mockdb_repository_player.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/button_registrieren.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_erriconbtn_forall.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_universalform_forall.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/functions/validate_func_forall_textfields.dart';
-import 'package:projekt_481_play_with_me/feature/info_players/models/player_profile.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/models/player.dart';
 import 'package:projekt_481_play_with_me/feature/navigation_wrapper/screens/navigation_wrapper.dart';
 
 class AuthorizationScreen extends StatefulWidget {
@@ -42,7 +42,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
 
     if (loginAuthError == null && passwordAuthError == null) {
       try {
-        PlayerProfile? player = await repository.getPlayerByLogin(login);
+        Player? player = await repository.getPlayerByLogin(login);
 
         // if (player != null && player.password == password) { !!!!!!!!
         if (player != null) {
