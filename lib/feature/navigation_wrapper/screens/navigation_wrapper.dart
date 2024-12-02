@@ -3,7 +3,7 @@ import 'package:projekt_481_play_with_me/feature/game_planning/screens/gameplan_
 import 'package:projekt_481_play_with_me/feature/info_courts/screens/info_fields_screen.dart';
 import 'package:projekt_481_play_with_me/feature/info_general/info_general.dart';
 import 'package:projekt_481_play_with_me/feature/info_players/screens/info_players_screen.dart';
-import 'package:projekt_481_play_with_me/shared/widgets/navigation_app_bar.dart';
+import 'package:projekt_481_play_with_me/shared/navigation_app_bar.dart';
 
 class NavigationWrapper extends StatefulWidget {
   const NavigationWrapper({super.key});

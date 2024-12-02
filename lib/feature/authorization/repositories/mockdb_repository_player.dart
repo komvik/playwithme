@@ -3,20 +3,18 @@ import 'package:projekt_481_play_with_me/feature/authorization/repositories/data
 import 'package:projekt_481_play_with_me/feature/info_players/models/player_profile.dart';
 
 class MockdbRepositoryPlayer implements DatabaseRepositoryPlayer {
-  // Список игроков
   final List<PlayerProfile> loginsPlayers = [];
 
   @override
   Future<void> addPlayer(PlayerProfile player) async {
-    await Future.delayed(const Duration(seconds: 1)); // Симуляция задержки
+    await Future.delayed(const Duration(seconds: 1));
 
-    // Проверяем, существует ли игрок с таким логином
     if (loginsPlayers
-        .any((existingPlayer) => existingPlayer.nickName == player.nickName)) {
-      log("Der Spieler mit dem Nickname '${player.nickName}' existiert bereits.");
+        .any((existingPlayer) => existingPlayer.userName == player.userName)) {
+      log("Der Spieler mit dem Nickname '${player.userName}' existiert bereits.");
     } else {
       loginsPlayers.add(player);
-      log("Spieler ${player.nickName} wurde hinzugefügt.");
+      log("Spieler ${player.userName} wurde hinzugefügt.");
     }
   }
 
@@ -27,7 +25,7 @@ class MockdbRepositoryPlayer implements DatabaseRepositoryPlayer {
     try {
       // Пытаемся найти игрока с таким логином
       PlayerProfile playerToRemove = loginsPlayers.firstWhere(
-        (player) => player.nickName == login, // Ищем игрока по логину
+        (player) => player.userName == login, // Ищем игрока по логину
       );
 
       // Удаляем игрока, если он найден
@@ -45,7 +43,7 @@ class MockdbRepositoryPlayer implements DatabaseRepositoryPlayer {
 
     try {
       // Пытаемся найти игрока с таким логином
-      return loginsPlayers.firstWhere((player) => player.nickName == login);
+      return loginsPlayers.firstWhere((player) => player.userName == login);
     } catch (e) {
       // Если игрок не найден (выбрасывается исключение), возвращаем null
       return null;

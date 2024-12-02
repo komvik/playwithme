@@ -4,8 +4,8 @@ class AuthService {
   //___________________________________________________________
   bool authenticate(PlayerAuth auth) {
     // hier db lesen logic
-    if (auth.username == 'user' && auth.password == 'u123') {
-      auth.authToken = 'at123'; //function generiert token
+    if (auth.username == 'user' && auth.password == '123') {
+      auth.authToken = 'user123'; //function generiert token
       return true;
     }
     return false;

@@ -4,7 +4,7 @@ import 'package:projekt_481_play_with_me/feature/authorization/repositories/mock
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/button_registrieren.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_erriconbtn_forall.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_universalform_forall.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/widgets/validate_functions_to_all_t_f_f.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/functions/validate_func_forall_textfields.dart';
 import 'package:projekt_481_play_with_me/feature/info_players/models/player_profile.dart';
 import 'package:projekt_481_play_with_me/feature/navigation_wrapper/screens/navigation_wrapper.dart';
 
@@ -22,16 +22,12 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
   String? loginAuthError;
   String? passwordAuthError;
 
-  // Создаем экземпляр репозитория для работы с данными игроков
-  final DatabaseRepositoryPlayer repository =
-      MockdbRepositoryPlayer(); // Инициализируем репозиторий
+  final DatabaseRepositoryPlayer repository = MockdbRepositoryPlayer();
 
-  // Метод для аутентификации
   Future<void> _authenticateUser() async {
     final login = controllerAuthLgn.text;
     final password = controllerAuthPwd.text;
 
-    // Валидация полей с использованием функций из ValidationUtils
     ValidationUtils.validateLogin(login, (error) {
       setState(() {
         loginAuthError = error;
@@ -44,28 +40,24 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
       });
     });
 
-    // Если ошибок нет, пытаемся авторизовать пользователя
     if (loginAuthError == null && passwordAuthError == null) {
       try {
-        // Ищем игрока по логину
         PlayerProfile? player = await repository.getPlayerByLogin(login);
 
-        // if (player != null && player.password == password) {
+        // if (player != null && player.password == password) { !!!!!!!!
         if (player != null) {
-          // Если пароль совпадает, авторизация прошла успешно
+          // ignore: use_build_context_synchronously !!!!!!!!!!!
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const NavigationWrapper()),
           );
         } else {
           setState(() {
-            // Если логин или пароль неверный
-            passwordAuthError = 'Неверный логин или пароль';
+            passwordAuthError = "Incorrect login or password";
           });
         }
       } catch (e) {
         setState(() {
-          // Обработка ошибок (например, если игрок не найден)
-          loginAuthError = 'Ошибка при авторизации';
+          loginAuthError = "Error during authorization";
         });
       }
     }
@@ -100,7 +92,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                           InformationErrorIconButton(
                             errorMessage: loginAuthError,
                             fieldName: "Login",
-                            dialogContent: "Ошибка при вводе логина",
+                            dialogContent: "Error Login",
                           ),
                           AdaptiveTextFormField(
                             controller: controllerAuthLgn,
@@ -123,7 +115,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                           InformationErrorIconButton(
                             errorMessage: passwordAuthError,
                             fieldName: "Password",
-                            dialogContent: "Ошибка при вводе пароля",
+                            dialogContent: "Error Pass",
                           ),
                           AdaptiveTextFormField(
                             controller: controllerAuthPwd,
@@ -139,26 +131,27 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 15),
-                      // Button для регистрации
-                      const ButtonRegistrieren(),
-                      const SizedBox(height: 80),
                     ],
                   ),
                 ),
                 Positioned(
-                  top: 570,
+                  top: 470,
                   left: 120,
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Colors.transparent),
                     ),
-                    onPressed: _authenticateUser, // Вызов авторизации
+                    onPressed: _authenticateUser,
                     child: Text(
                       "Einloggen",
                       style: Theme.of(context).textTheme.displayMedium,
                     ),
                   ),
+                ),
+                const Positioned(
+                  top: 650,
+                  left: 160,
+                  child: ButtonRegistrieren(),
                 ),
               ],
             ),
