@@ -4,7 +4,7 @@ class AuthService {
   //___________________________________________________________
   bool authenticate(Player auth) {
     // hier db lesen logic
-    if (auth.userName == 'MiJ' && auth.password == '123') {
+    if (auth.eMail == 'example@email.mail' && auth.password == '123') {
       return true;
     }
     return false;

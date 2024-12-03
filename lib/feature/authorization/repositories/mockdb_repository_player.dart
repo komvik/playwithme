@@ -11,37 +11,38 @@ class MockdbRepositoryPlayer implements DatabaseRepositoryPlayer {
     await Future.delayed(const Duration(seconds: 1));
 
     if (loginsPlayers
-        .any((existingPlayer) => existingPlayer.userName == player.userName)) {
-      log("Der Spieler mit dem Nickname '${player.userName}' existiert bereits.");
+        .any((existingPlayer) => existingPlayer.eMail == player.eMail)) {
+      log("Der Spieler mit e-mail  '${player.eMail}' existiert bereits.");
     } else {
       loginsPlayers.add(player);
-      log("Spieler ${player.userName} wurde hinzugefügt.");
+      log("Spieler ${player.eMail} wurde hinzugefügt.");
     }
   }
 
   @override
-  Future<void> deletePlayer(String login) async {
+  Future<void> deletePlayer(String email) async {
     await Future.delayed(const Duration(seconds: 1));
 
     try {
       Player playerToRemove = loginsPlayers.firstWhere(
-        (player) => player.userName == login,
+        (player) => player.eMail == email,
       );
 
       loginsPlayers.remove(playerToRemove);
-      log("Spieler $login wurde gelöscht.");
+      log("Spieler $email wurde gelöscht.");
     } catch (e) {
-      log("Kein Spieler mit dem Nickname '$login' gefunden.");
+      log("Kein Spieler mit dem e-mail '$email' gefunden.");
     }
   }
 
   @override
-  Future<Player?> getPlayerByLogin(String login) async {
+  Future<Player?> getPlayerByEmail(String email) async {
     await Future.delayed(const Duration(seconds: 1));
 
     try {
-      return loginsPlayers.firstWhere((player) => player.userName == login);
+      return loginsPlayers.firstWhere((player) => player.eMail == email);
     } catch (e) {
+      log(" Error:  $e");
       return null;
     }
   }

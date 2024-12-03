@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/logic/validate_functions_to_all_t_f_f.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/repositories/all_errorinfo_textform.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/repositories/database_repository_player.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/repositories/mockdb_repository_player.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/button_registrieren.dart';
@@ -16,23 +17,24 @@ class AuthorizationScreen extends StatefulWidget {
 }
 
 class _AuthorizationScreenState extends State<AuthorizationScreen> {
-  final controllerAuthLgn = TextEditingController();
+  final controllerEmail = TextEditingController();
   final controllerAuthPwd = TextEditingController();
 
-  String? loginAuthError;
+  String? emailError;
   String? passwordAuthError;
 
   final DatabaseRepositoryPlayer repository = MockdbRepositoryPlayer();
 
   Future<void> _authenticateUser() async {
-    final login = controllerAuthLgn.text;
+    final email = controllerEmail.text;
     final password = controllerAuthPwd.text;
-//
-    ValidationUtils.validateLogin(login, (error) {
+//_______________________________________________________ validate email
+    ValidationUtils.validateEmail(email, (error) {
       setState(() {
-        loginAuthError = error;
+        emailError = error;
       });
     });
+//_______________________________________________________ validate password
 
     ValidationUtils.validatePassword(password, (error) {
       setState(() {
@@ -40,9 +42,9 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
       });
     });
 
-    if (loginAuthError == null && passwordAuthError == null) {
+    if (emailError == null && passwordAuthError == null) {
       try {
-        Player? player = await repository.getPlayerByLogin(login);
+        Player? player = await repository.getPlayerByEmail(email);
 
         // if (player != null && player.password == password) { !!!!!!!!
         if (player != null) {
@@ -57,7 +59,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
         }
       } catch (e) {
         setState(() {
-          loginAuthError = "Error during authorization";
+          emailError = "Error during authorization";
         });
       }
     }
@@ -82,26 +84,27 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
               textDirection: TextDirection.ltr,
               children: <Widget>[
                 Positioned(
-                  top: 270,
-                  left: 10,
+                  top: 260,
+                  right: 40,
                   child: Column(
                     children: [
-                      //========================================= LOGIN
+                      //======================================= E-Mail as login
                       Row(
                         children: [
                           InformationErrorIconButton(
-                            errorMessage: loginAuthError,
-                            fieldName: "Login",
-                            dialogContent: "Error Login",
+                            errorMessage: emailError,
+                            fieldName: fields[3].fieldName,
+                            dialogContent: fields[3].dialogContext,
                           ),
                           AdaptiveTextFormField(
-                            controller: controllerAuthLgn,
-                            errorText: loginAuthError,
-                            labelText: "Login",
+                            setWidth: 300,
+                            controller: controllerEmail,
+                            errorText: emailError,
+                            labelText: "E-mail",
                             onChanged: (text) {
-                              ValidationUtils.onChangedLogin(text, (error) {
+                              ValidationUtils.onChangedEmail(text, (error) {
                                 setState(() {
-                                  loginAuthError = error;
+                                  emailError = error;
                                 });
                               });
                             },

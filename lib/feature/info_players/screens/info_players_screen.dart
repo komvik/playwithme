@@ -56,6 +56,8 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                           ? (bool? value) {
                               setState(() {
                                 players[index] = Player(
+                                  eMail: player.eMail,
+                                  password: player.password,
                                   firstName: player.firstName,
                                   lastName: player.lastName,
                                   nickName: player.nickName,
@@ -105,6 +107,8 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                                               // After sending the message, return the checkbox to the false state
                                               setState(() {
                                                 players[index] = Player(
+                                                  eMail: player.eMail,
+                                                  password: player.password,
                                                   firstName: player.firstName,
                                                   lastName: player.lastName,
                                                   nickName: player.nickName,
@@ -127,6 +131,8 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                                               // Return the checkbox to false when canceled
                                               setState(() {
                                                 players[index] = Player(
+                                                  eMail: player.eMail,
+                                                  password: player.password,
                                                   firstName: player.firstName,
                                                   lastName: player.lastName,
                                                   nickName: player.nickName,
