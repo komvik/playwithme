@@ -27,7 +27,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
   Future<void> _authenticateUser() async {
     final login = controllerAuthLgn.text;
     final password = controllerAuthPwd.text;
-
+//
     ValidationUtils.validateLogin(login, (error) {
       setState(() {
         loginAuthError = error;
