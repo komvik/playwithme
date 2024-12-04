@@ -15,7 +15,7 @@ class ShowInfoTextDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Feldeingaberegeln für $fieldName"),
+      title: Text("Feldeingaberegeln für\n $fieldName"),
       content: SingleChildScrollView(
         child: ListBody(
           children: [

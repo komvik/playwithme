@@ -38,9 +38,10 @@ class MockdbRepositoryPlayer implements DatabaseRepositoryPlayer {
   @override
   Future<Player?> getPlayerByEmail(String email) async {
     await Future.delayed(const Duration(seconds: 1));
-
+    Player player;
     try {
-      return loginsPlayers.firstWhere((player) => player.eMail == email);
+      player = loginsPlayers.firstWhere((player) => player.eMail == email);
+      return player;
     } catch (e) {
       log(" Error:  $e");
       return null;

@@ -18,8 +18,8 @@ class InformationErrorIconButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 25),
       child: SizedBox(
-        width: 80,
-        height: 60,
+        width: 50,
+        height: 50,
         child: errorMessage != null
             ? IconButton(
                 onPressed: () {

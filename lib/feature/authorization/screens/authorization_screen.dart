@@ -28,6 +28,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
   Future<void> _authenticateUser() async {
     final email = controllerEmail.text;
     final password = controllerAuthPwd.text;
+
 //_______________________________________________________ validate email
     ValidationUtils.validateEmail(email, (error) {
       setState(() {
@@ -41,15 +42,15 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
         passwordAuthError = error;
       });
     });
-
+//_________________________________________________________________________
+//
     if (emailError == null && passwordAuthError == null) {
+      NavigatorState navigator = Navigator.of(context);
       try {
         Player? player = await repository.getPlayerByEmail(email);
 
-        // if (player != null && player.password == password) { !!!!!!!!
-        if (player != null) {
-          // ignore: use_build_context_synchronously !!!!!!!!!!!
-          Navigator.of(context).pushReplacement(
+        if (player != null && player.password == password) {
+          navigator.pushReplacement(
             MaterialPageRoute(builder: (context) => const NavigationWrapper()),
           );
         } else {
@@ -64,6 +65,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
       }
     }
   }
+//_________________________________________________________________________
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +94,8 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                       Row(
                         children: [
                           InformationErrorIconButton(
+                            // emailError als null oder not null
+                            // show or hidden icon
                             errorMessage: emailError,
                             fieldName: fields[3].fieldName,
                             dialogContent: fields[3].dialogContext,
@@ -100,7 +104,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                             setWidth: 300,
                             controller: controllerEmail,
                             errorText: emailError,
-                            labelText: "E-mail",
+                            labelText: "Email",
                             onChanged: (text) {
                               ValidationUtils.onChangedEmail(text, (error) {
                                 setState(() {
@@ -117,8 +121,8 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
                         children: [
                           InformationErrorIconButton(
                             errorMessage: passwordAuthError,
-                            fieldName: "Password",
-                            dialogContent: "Error Pass",
+                            fieldName: fields[1].fieldName,
+                            dialogContent: fields[1].dialogContext,
                           ),
                           AdaptiveTextFormField(
                             controller: controllerAuthPwd,
