@@ -11,7 +11,7 @@
 <a id="Inhaltsverzeichnis"></a>
 ## Inhaltsverzeichnis
 
-#### [Teil 1.Hauptfunktionen:](1)
+#### [Teil 1.Hauptfunktionen:](#1)
 
 ###### [1.1.  Registrierung und Benutzerprofile](#1.1)
 ###### [1.2. Anmeldung und Informationsabruf](#1.2)
@@ -62,6 +62,7 @@
 
 ##### 1.5. Zeitplanung und Benachrichtigungen
 - **Benachrichtigungen**: Benachrichtigungen über bevorstehende Spiele, Änderungen im Zeitplan oder wenn jemand seine Teilnahme storniert.
+[ zurück zum Inhaltsverzeichnis](#Inhaltsverzeichnis)
 
 <a id="Teil2"></a>
 ### Teil 2.   Erweiterte Funktionen: 
