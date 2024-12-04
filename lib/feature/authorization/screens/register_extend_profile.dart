@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/models/player.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/models/player_storage.dart';
 import 'package:projekt_481_play_with_me/feature/info_players/repositories/player_avatar_images.dart';
 import 'package:projekt_481_play_with_me/feature/navigation_wrapper/screens/navigation_wrapper.dart';
 
 class RegistrationDataScreen extends StatefulWidget {
-  const RegistrationDataScreen({super.key});
+  final String email;
+  final String password;
+
+  const RegistrationDataScreen(
+      {super.key, required this.email, required this.password});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -13,9 +19,22 @@ class RegistrationDataScreen extends StatefulWidget {
 
 class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
   // Variable to store the selected avatar
-  String _selectedAvatar = 'assets/images_avatar/avatar1.png'; // Default
-// Brauchen wir, damit wir alle TextFormFields validieren können
+  String _selectedAvatar = 'assets/images_avatar/avatar1.png';
+  String _email = "";
+  String _password = "";
+
+  @override
+  void initState() {
+    super.initState();
+    _email = widget.email;
+    _password = widget.password;
+  }
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _nickNameController = TextEditingController();
 
   final ImagePicker _picker = ImagePicker();
 
@@ -34,6 +53,23 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
     if (value == null || value.isEmpty) return "Bitte ein text angeben";
     if (value.length < 4) return "text is to short (4 chars minimum)";
     return null;
+  }
+
+  Future<void> _saveData() async {
+    final player = Player(
+      eMail: _email,
+      password: _password,
+      firstName: _nameController.text,
+      lastName: _lastNameController.text,
+      nickName: _nickNameController.text,
+      avatarUrl: _selectedAvatar,
+    );
+
+    List<Player> players = [player];
+    await PlayerStorage.savePlayers(players);
+
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const NavigationWrapper()));
   }
 
   @override
@@ -174,14 +210,13 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
+                        _saveData();
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Center(
                                 child: Text("Daten erfolgreich gespeichert.")),
                           ),
                         );
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const NavigationWrapper()));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(

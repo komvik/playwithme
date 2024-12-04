@@ -133,4 +133,4 @@
     + Using configuration files in the folder config
         [lib/config](lib/config)
     + Beschreibung verschiedener Parameter wie zum Beispiel..
-       [readme_all/readme_color.png](readme_all/readme_color.png) 
+       [readme_all/readme_color.png](readme_all/README_COLOR.png) 

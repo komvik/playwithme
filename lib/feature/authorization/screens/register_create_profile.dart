@@ -13,7 +13,6 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  final controllerLgn = TextEditingController();
   final controllerPwd = TextEditingController();
   final controllerPwdConf = TextEditingController();
   final controllerEmail = TextEditingController();
@@ -37,32 +36,34 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               textDirection: TextDirection.ltr,
               children: <Widget>[
                 Positioned(
-                  top: 300,
-                  right: 15,
+                  top: 400,
+                  right: 50,
                   child: Column(
                     children: [
-                      //========================= LOGIN
+                      //=========================== EMAIL
                       Row(
                         children: [
                           InformationErrorIconButton(
-                            errorMessage: loginError,
-                            fieldName: fields[0].fieldName,
-                            dialogContent: fields[0].dialogContext,
+                            errorMessage: emailError,
+                            fieldName: fields[3].fieldName,
+                            dialogContent: fields[3].dialogContext,
                           ),
                           AdaptiveTextFormField(
-                            controller: controllerLgn,
-                            errorText: loginError,
-                            labelText: "Login",
+                            setWidth: 310,
+                            controller: controllerEmail,
+                            errorText: emailError,
+                            labelText: "E-mail",
                             onChanged: (text) {
-                              ValidationUtils.onChangedLogin(text, (error) {
+                              ValidationUtils.onChangedEmail(text, (error) {
                                 setState(() {
-                                  loginError = error;
+                                  emailError = error;
                                 });
                               });
                             },
                           ),
                         ],
                       ),
+
                       //========================= PASSWORD
                       Row(
                         children: [
@@ -107,49 +108,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           ),
                         ],
                       ),
-                      //=========================== EMAIL
-                      Row(
-                        children: [
-                          InformationErrorIconButton(
-                            errorMessage: emailError,
-                            fieldName: fields[3].fieldName,
-                            dialogContent: fields[3].dialogContext,
-                          ),
-                          AdaptiveTextFormField(
-                            setWidth: 310,
-                            controller: controllerEmail,
-                            errorText: emailError,
-                            labelText: "E-mail",
-                            onChanged: (text) {
-                              ValidationUtils.onChangedEmail(text, (error) {
-                                setState(() {
-                                  emailError = error;
-                                });
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                      //_________________________________________
-                      //const ButtonEinloggen(),
                     ],
                   ),
                 ),
                 Positioned(
-                  top: 700,
-                  left: 50,
-                  right: 10,
+                  top: 650,
+                  right: 90,
                   child: OutlinedButton(
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Colors.transparent),
                     ),
                     onPressed: () {
-                      ValidationUtils.validateLogin(controllerLgn.text,
-                          (error) {
-                        setState(() {
-                          loginError = error;
-                        });
-                      });
                       ValidationUtils.validatePassword(controllerPwd.text,
                           (error) {
                         setState(() {
@@ -174,8 +143,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           confirmPwdError == null &&
                           emailError == null) {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) =>
-                                const RegistrationDataScreen()));
+                            builder: (context) => RegistrationDataScreen(
+                                  email: controllerEmail.text,
+                                  password: controllerPwd.text,
+                                )));
                       }
                     },
                     child: Text(

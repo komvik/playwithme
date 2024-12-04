@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/info_players/models/player.dart';
-import 'package:projekt_481_play_with_me/feature/info_players/repositories/player_data.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/models/player_storage.dart';
 
 class InfoPlayersScreen extends StatefulWidget {
   const InfoPlayersScreen({super.key});
@@ -11,6 +11,38 @@ class InfoPlayersScreen extends StatefulWidget {
 }
 
 class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
+  List<Player> players = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPlayers();
+  }
+
+  Future<void> _loadPlayers() async {
+    List<Player> loadedPlayers = await PlayerStorage.loadPlayers();
+    setState(() {
+      players = loadedPlayers;
+    });
+  }
+
+  Future<void> _deletePlayerByIndex(int index) async {
+    // löshe ich player aus der liste per index
+    final playerToDelete = players[index];
+    setState(() {
+      players.removeAt(index);
+    });
+    // danach speichere vieder alles
+    await PlayerStorage.savePlayers(players);
+
+    // zeige status
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+          content: Text(
+              "${playerToDelete.firstName} ${playerToDelete.lastName} DELETED!")),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -143,6 +175,8 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                                                       false, // Reset checkbox state
                                                   online: player.online,
                                                 );
+                                                PlayerStorage.savePlayers(
+                                                    players); // TODO
                                               });
 
                                               Navigator.of(context)
@@ -212,6 +246,10 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                       ),
                     ],
                   ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.delete, color: Colors.red),
+                  onPressed: () => _deletePlayerByIndex(index),
                 ),
               ],
             ),

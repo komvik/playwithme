@@ -18,4 +18,26 @@ class PlayerStorage {
     }
     return Player.decodePlayers(playersJson);
   }
+  //TODO   proverit pochemu eta badjaga ne zavoditsja iz za orElse: () => null);
+
+  // static Future<Player?> getPlayerByEmail(String email) async {
+  //   List<Player> players = await loadPlayers();
+  //   try {
+  //     return players.firstWhere((player) => player.eMail == email,
+  //         orElse: () => null);
+  //   } catch (e) {
+  //     return null;
+  //   }
+  // }
+
+  static Future<Player?> getPlayerByEmail(String email) async {
+    List<Player> players = await loadPlayers();
+    try {
+      return players.firstWhere((player) => player.eMail == email);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  static Future<void> deletePlayerByEmail(index) async {} //TODO
 }
