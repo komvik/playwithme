@@ -13,24 +13,24 @@
 
 #### [Teil 1.Hauptfunktionen:](#1)
 
-###### [1.1.  Registrierung und Benutzerprofile](#1.1)
-###### [1.2. Anmeldung und Informationsabruf](#1.2)
-###### [1.3. Spielsuche und Spielerstellung](#1.3)
-###### [1.4. Karte mit verfügbaren Plätzen](#1.4)
-###### [1.5. Zeitplanung und Benachrichtigungen](#1.5)
++ ###### [1.1.  Registrierung und Benutzerprofile](#1.1)
++ ###### [1.2. Anmeldung und Informationsabruf](#1.2)
++ ###### [1.3. Spielsuche und Spielerstellung](#1.3)
++ ###### [1.4. Karte mit verfügbaren Plätzen](#1.4)
++ ###### [1.5. Zeitplanung und Benachrichtigungen](#1.5)
 
 
-#### [ Teil 2 Erweiterte Funktionen:](#Teil2)    
+#### [ Teil 2 Erweiterte Funktionen: (optional) ](#2)    
 
-###### [2.1. Registrierung und Benutzerprofile](#2.1)
-###### [2.2. Karte mit verfügbaren Plätzen](#2.2)
-###### [2.3. Spielsuche und Erstellung](#2.3)
-###### [2.4. Anmeldung als Team oder Einzelspieler](#2.4)
-###### [2.5. Gruppenchats und Spielerinteraktion](#2.5)
-###### [2.6. Zeitplanung und Benachrichtigungen](#2.6)
-###### [2.7. Integration mit sozialen Netzwerken](#2.7)
++ ###### [2.1. Registrierung und Benutzerprofile](#2.1)
++ ###### [2.2. Karte mit verfügbaren Plätzen](#2.2)
++ ###### [2.3. Spielsuche und Erstellung](#2.3)
++ ###### [2.4. Anmeldung als Team oder Einzelspieler](#2.4)
++ ###### [2.5. Gruppenchats und Spielerinteraktion](#2.5)
++ ###### [2.6. Zeitplanung und Benachrichtigungen](#2.6)
++ ###### [2.7. Integration mit sozialen Netzwerken](#2.7)
 
-
+#### [Teil 3.   Technische Merkmale und Architektur: ](#3)
 
 
 #### Teil 1.Hauptfunktionen:
@@ -64,7 +64,7 @@
 - **Benachrichtigungen**: Benachrichtigungen über bevorstehende Spiele, Änderungen im Zeitplan oder wenn jemand seine Teilnahme storniert.
 [ zurück zum Inhaltsverzeichnis](#Inhaltsverzeichnis)
 
-<a id="Teil2"></a>
+<a id="2"></a>
 ### Teil 2.   Erweiterte Funktionen: 
 [ zurück zum Inhaltsverzeichnis](#Inhaltsverzeichnis)
 
@@ -115,3 +115,22 @@
 ##### 2.7 Integration mit sozialen Netzwerken
 - **Spiel teilen**: Möglichkeit, einen Link zu einem Spiel in sozialen Netzwerken zu teilen, um Freunde einzuladen.
 [ zurück zum Inhaltsverzeichnis](#Inhaltsverzeichnis)
+
+
+
+
+<a id="3"></a>
+### Teil 3.   Technische Merkmale und Architektur: 
+[ zurück zum Inhaltsverzeichnis](#Inhaltsverzeichnis)
+
++ 3.1. Systemarchitektur
+    + Architekturtyp: Client-Server-Architektur, Microservices.
+    + Datenbank: SharedPreferences und fermutlich FireBase.
+    + Backend: API technologie.
+    + Frontend: Dart und Flutter für iOS und Android.
+    
++ 3.2. Technologien und Tools
+    + Using configuration files in the folder config
+        [lib/config](lib/config)
+    + Beschreibung verschiedener Parameter wie zum Beispiel..
+       [readme_all/readme_color.png](readme_all/readme_color.png) 
