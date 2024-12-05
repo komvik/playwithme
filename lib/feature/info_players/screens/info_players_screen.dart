@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/info_players/models/player.dart';
 import 'package:projekt_481_play_with_me/feature/info_players/models/player_storage.dart';
+import 'package:projekt_481_play_with_me/feature/info_players/screens/availability_chips.dart';
 
 class InfoPlayersScreen extends StatefulWidget {
   const InfoPlayersScreen({super.key});
@@ -74,92 +75,82 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
           ),
           child: Padding(
             padding: const EdgeInsets.all(8),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
               children: [
-                //___________________________________ Online status indicator
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Circular status indicator
-                    Container(
-                      width: 12,
-                      height: 12,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: player.online ? Colors.green : Colors.red,
+                    //___________________________________ Online status indicator
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        // Circular status indicator
+                        Container(
+                          width: 12,
+                          height: 12,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: player.online ? Colors.green : Colors.red,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          player.online ? "Online" : "Offline",
+                          style: const TextStyle(
+                            fontSize: 12,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        // _______________________________Checkbox to send message
+                        // TODO erstmall gelöscht danach aus file
+                        // info_player_screen.dart hollen und implementieren
+                      ],
+                    ),
+                    const SizedBox(width: 8), // Space between status and avatar
+
+                    // ________________________________________  AVATAR
+                    CircleAvatar(
+                      radius: 24,
+                      backgroundImage: player.avatarUrl.isNotEmpty
+                          ? AssetImage(player.avatarUrl)
+                          : const AssetImage(
+                              "assets/images_avatar/avatar1.png"),
+                    ),
+                    const SizedBox(width: 8),
+
+                    //__________________________________________ INFO PLAYER
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${player.firstName} ${player.lastName}",
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            " ${player.nickName}", //Nickname
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+
+                          // ________________________  Availability
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 4),
-                    Text(
-                      player.online ? "Online" : "Offline",
-                      style: const TextStyle(
-                        fontSize: 12,
-                      ),
+                    IconButton(
+                      icon: const Icon(Icons.delete,
+                          color: Color.fromARGB(255, 130, 127, 223)),
+                      onPressed: () => _deletePlayerByIndex(index),
                     ),
-                    const SizedBox(height: 8),
-                    // _______________________________Checkbox to send message
-                    // TODO erstmall gelöscht danach aus file
-                    // info_player_screen.dart hollen und implementieren
                   ],
                 ),
-                const SizedBox(width: 8), // Space between status and avatar
-
-                // ________________________________________  AVATAR
-                CircleAvatar(
-                  radius: 24,
-                  backgroundImage: player.avatarUrl.isNotEmpty
-                      ? AssetImage(player.avatarUrl)
-                      : const AssetImage("assets/images_avatar/avatar1.png"),
-                ),
-                const SizedBox(width: 8),
-
-                //__________________________________________ INFO PLAYER
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "${player.firstName} ${player.lastName}",
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        " ${player.nickName}", //Nickname
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-
-                      // ________________________  Availability
-                      const SizedBox(height: 4),
-                      Wrap(
-                        spacing: 4,
-                        children: player.availability.map((status) {
-                          return Chip(
-                            label: Text(
-                              status,
-                              style: const TextStyle(fontSize: 12),
-                            ),
-                            backgroundColor: status == 'Ja'
-                                ? Colors.green[100]
-                                : status == 'Vielleicht'
-                                    ? Colors.orange[100]
-                                    : Colors.red[100],
-                          );
-                        }).toList(),
-                      ),
-                    ],
-                  ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.delete,
-                      color: Color.fromARGB(255, 130, 127, 223)),
-                  onPressed: () => _deletePlayerByIndex(index),
-                ),
+                const SizedBox(height: 4),
+                AvailabilityChips(player: player),
               ],
             ),
           ),
