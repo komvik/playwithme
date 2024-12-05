@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/logic/validate_functions_to_all_t_f_f.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/repositories/all_errorinfo_textform.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/repositories/delete_all_errorinfo_textform.dart';
 //import 'package:projekt_481_play_with_me/feature/authorization/repositories/database_repository_player.dart';
 //import 'package:projekt_481_play_with_me/feature/authorization/repositories/mockdb_repository_player.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/button_registrieren.dart';
@@ -48,7 +48,7 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
     if (emailError == null && passwordAuthError == null) {
       NavigatorState navigator = Navigator.of(context);
       try {
-        //amstatt dass
+        //anstatt dass
         // Player? player = await repository.getPlayerByEmail(email);
         //sreibe ich
         Player? player = await PlayerStorage.getPlayerByEmail(email);

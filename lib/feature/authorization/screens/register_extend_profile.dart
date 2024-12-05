@@ -28,13 +28,14 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
     super.initState();
     _email = widget.email;
     _password = widget.password;
+    _loadPlayers();
   }
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
-  final TextEditingController _nickNameController = TextEditingController();
+  final TextEditingController _controllerName = TextEditingController();
+  final TextEditingController _controllerLastname = TextEditingController();
+  final TextEditingController _controllerNickname = TextEditingController();
 
   final ImagePicker _picker = ImagePicker();
 
@@ -55,23 +56,40 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
     return null;
   }
 
-  Future<void> _saveData() async {
-    final player = Player(
+//======================================= SAVE DATA TO SHAREDPREFERENCES
+  List<Player> _players = [];
+// abruffen alle exestierte players
+  Future<void> _loadPlayers() async {
+    _players = await PlayerStorage.loadPlayers();
+    setState(() {});
+  }
+
+  Future<void> _addPlayers() async {
+    final newPlayer = Player(
       eMail: _email,
       password: _password,
-      firstName: _nameController.text,
-      lastName: _lastNameController.text,
-      nickName: _nickNameController.text,
+      firstName: _controllerName.text,
+      lastName: _controllerLastname.text,
+      nickName: _controllerNickname.text,
       avatarUrl: _selectedAvatar,
     );
 
-    List<Player> players = [player];
-    await PlayerStorage.savePlayers(players);
+    setState(() {
+      _players.add(newPlayer);
+    });
+
+    // List<Player> players = [player];
+    await PlayerStorage.savePlayers(_players);
 
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const NavigationWrapper()));
   }
 
+  void _clearFields() {
+    //  TODO clear alle felder
+  }
+
+//=======================================
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -159,6 +177,7 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                   left: 40,
                   right: 40,
                   child: TextFormField(
+                    controller: _controllerName,
                     decoration: const InputDecoration(
                       label: Text("Name"),
                       labelStyle: TextStyle(
@@ -175,6 +194,7 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                   left: 40,
                   right: 40,
                   child: TextFormField(
+                    controller: _controllerLastname,
                     decoration: const InputDecoration(
                       label: Text("Nachname"),
                       labelStyle: TextStyle(
@@ -191,6 +211,7 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                   left: 40,
                   right: 40,
                   child: TextFormField(
+                    controller: _controllerNickname,
                     decoration: const InputDecoration(
                       label: Text("Spitzname"),
                       labelStyle: TextStyle(
@@ -210,7 +231,7 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        _saveData();
+                        _addPlayers();
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Center(

@@ -11,7 +11,8 @@ class InfoPlayersScreen extends StatefulWidget {
 }
 
 class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
-  List<Player> players = [];
+  List<Player> _players = [];
+  int _currentPlayerIndex = 0;
 
   @override
   void initState() {
@@ -19,21 +20,37 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
     _loadPlayers();
   }
 
+// Load Alle player
+//__________________________________________________________________
   Future<void> _loadPlayers() async {
     List<Player> loadedPlayers = await PlayerStorage.loadPlayers();
     setState(() {
-      players = loadedPlayers;
+      _players = loadedPlayers;
     });
   }
 
+//
+//__________________________________________________
+  void _nextPlayer() {
+    setState(() {
+      if (_currentPlayerIndex < _players.length - 1) {
+        _currentPlayerIndex++;
+      } else {
+        print("check completed");
+      }
+    });
+  }
+
+// Lösche player mit index
+//__________________________________________________________________
   Future<void> _deletePlayerByIndex(int index) async {
     // löshe ich player aus der liste per index
-    final playerToDelete = players[index];
+    final playerToDelete = _players[index];
     setState(() {
-      players.removeAt(index);
+      _players.removeAt(index);
     });
     // danach speichere vieder alles
-    await PlayerStorage.savePlayers(players);
+    await PlayerStorage.savePlayers(_players);
 
     // zeige status
     ScaffoldMessenger.of(context).showSnackBar(
@@ -46,9 +63,9 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: players.length,
+      itemCount: _players.length,
       itemBuilder: (context, index) {
-        final player = players[index];
+        final player = _players[index];
 
         return Card(
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -82,117 +99,8 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                     ),
                     const SizedBox(height: 8),
                     // _______________________________Checkbox to send message
-                    Checkbox(
-                      value: player.sendMessage,
-                      onChanged: player.online
-                          ? (bool? value) {
-                              setState(() {
-                                players[index] = Player(
-                                  eMail: player.eMail,
-                                  password: player.password,
-                                  firstName: player.firstName,
-                                  lastName: player.lastName,
-                                  nickName: player.nickName,
-                                  avatarUrl: player.avatarUrl,
-                                  availability: player.availability,
-                                  sendMessage: value ?? false,
-                                  online: player.online,
-                                );
-
-                                if (value == true) {
-                                  final TextEditingController
-                                      messageController =
-                                      TextEditingController();
-
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return AlertDialog(
-                                        title: Text(
-                                            " Nachricht für ${player.firstName}"),
-                                        content: TextField(
-                                          controller: messageController,
-                                          decoration: const InputDecoration(
-                                            hintText:
-                                                "Geben Sie Ihre Nachricht ein",
-                                          ),
-                                        ),
-                                        actions: <Widget>[
-                                          TextButton(
-                                            onPressed: () {
-                                              // !!__!!__!!
-                                              //    Logic
-                                              // String message = messageController.text;
-                                              // Here you can add code to handle sending a message
-                                              // print(" message -> ${player.firstName}: $message");
-                                              //
-
-                                              // Notification that the message has been sent
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                const SnackBar(
-                                                  content: Text(
-                                                      "Nachricht gesendet!"),
-                                                ),
-                                              );
-
-                                              // After sending the message, return the checkbox to the false state
-                                              setState(() {
-                                                players[index] = Player(
-                                                  eMail: player.eMail,
-                                                  password: player.password,
-                                                  firstName: player.firstName,
-                                                  lastName: player.lastName,
-                                                  nickName: player.nickName,
-                                                  avatarUrl: player.avatarUrl,
-                                                  availability:
-                                                      player.availability,
-                                                  sendMessage:
-                                                      false, // Return the checkbox state to false
-                                                  online: player.online,
-                                                );
-                                              });
-
-                                              Navigator.of(context)
-                                                  .pop(); //Close dialog
-                                            },
-                                            child: const Text("Schicken"),
-                                          ),
-                                          TextButton(
-                                            onPressed: () {
-                                              // Return the checkbox to false when canceled
-                                              setState(() {
-                                                players[index] = Player(
-                                                  eMail: player.eMail,
-                                                  password: player.password,
-                                                  firstName: player.firstName,
-                                                  lastName: player.lastName,
-                                                  nickName: player.nickName,
-                                                  avatarUrl: player.avatarUrl,
-                                                  availability:
-                                                      player.availability,
-                                                  sendMessage:
-                                                      false, // Reset checkbox state
-                                                  online: player.online,
-                                                );
-                                                PlayerStorage.savePlayers(
-                                                    players); // TODO
-                                              });
-
-                                              Navigator.of(context)
-                                                  .pop(); // Close dialog without sending
-                                            },
-                                            child: const Text("Abbrechen"),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-                                }
-                              });
-                            }
-                          : null, // If offline, disable Checkbox
-                    ),
+                    // TODO erstmall gelöscht danach aus file
+                    // info_player_screen.dart hollen und implementieren
                   ],
                 ),
                 const SizedBox(width: 8), // Space between status and avatar
@@ -248,7 +156,8 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.delete, color: Colors.red),
+                  icon: const Icon(Icons.delete,
+                      color: Color.fromARGB(255, 130, 127, 223)),
                   onPressed: () => _deletePlayerByIndex(index),
                 ),
               ],

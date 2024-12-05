@@ -1,0 +1,5 @@
+{
+    "dart.flutterTrackWidgetCreation": false,
+    "dart.openDevTools": "flutter",
+    "dart.showInspectorNotificationsForWidgetErrors": false
+}
