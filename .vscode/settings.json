@@ -1,5 +1,8 @@
 {
-    "dart.flutterTrackWidgetCreation": false,
+    "dart.flutterTrackWidgetCreation": true,
     "dart.openDevTools": "flutter",
-    "dart.showInspectorNotificationsForWidgetErrors": false
+    "dart.showInspectorNotificationsForWidgetErrors": true,
+    "dart.previewFlutterUiGuides": true,
+    "dart.previewFlutterUiGuidesCustomTracking": true,
+    "dart.debugExternalPackageLibraries": true
 }

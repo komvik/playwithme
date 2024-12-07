@@ -4,7 +4,8 @@ const double myDisplaySmall = 28;
 const double myDisplayMedium = 32;
 const double myDisplayLarge = 38;
 
-const double myTitleSmall = 18;
+const double myTitleSmall = 14;
+const double myTitleMedium = 16;
 const double myTitleLarge = 22;
 
 //______________________________________ Size for Sizebox

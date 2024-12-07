@@ -74,8 +74,11 @@ class _GamePlanningScreenState extends State<GamePlanningScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text("Spielplanung", style: TextStyle(fontSize: 20)),
+            //____________________________________________________________
             const SizedBox(height: 10),
+            //____________________________________________________________
             SizedBox(
+              height: 50,
               width: MediaQuery.of(context).size.width / 3,
               child: TextField(
                 controller: _timeController,
@@ -91,9 +94,11 @@ class _GamePlanningScreenState extends State<GamePlanningScreen> {
                 readOnly: true,
               ),
             ),
+            //____________________________________________________________
             const SizedBox(height: 16),
+            //____________________________________________________________
             Container(
-              color: const Color.fromARGB(62, 0, 0, 0),
+              color: const Color.fromARGB(0, 0, 0, 0),
               width: 800,
               height: 400,
               child: ListView.builder(
@@ -115,8 +120,8 @@ class _GamePlanningScreenState extends State<GamePlanningScreen> {
                       margin: const EdgeInsets.all(16.0),
                       width: 300,
                       color: _selectedCourt == court.name
-                          ? Colors.blue[100]
-                          : Colors.white,
+                          ? const Color.fromARGB(234, 1, 163, 82)
+                          : const Color.fromARGB(255, 214, 246, 226),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -150,7 +155,9 @@ class _GamePlanningScreenState extends State<GamePlanningScreen> {
                 },
               ),
             ),
+            //____________________________________________________________
             const SizedBox(height: 16),
+            //____________________________________________________________
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -166,7 +173,6 @@ class _GamePlanningScreenState extends State<GamePlanningScreen> {
                 ),
               ],
             ),
-            const SizedBox(height: 50),
           ],
         ),
       ),

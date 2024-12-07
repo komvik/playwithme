@@ -1,5 +1,17 @@
+<a id="Inhaltsverzeichnis"></a>
+## Inhaltsverzeichnis
 
-
+- [Ziel des Projekt](#beschreibung)
+- [Funktionen](#1)
+- [Technische Anforderungen](#3)
+- [Installation](#installation)
+- [Benutzung](#benutzung)
+- [Tests](#tests)
+- [Mitwirken](#mitwirken)
+- [Lizenz](#lizenz)
+- [Changelog](#changelog)
+- [Autoren](#autoren)
+- [Links und Ressourcen](#links-und-ressourcen)
 
 ## Ziel des Projekt 
 ```
@@ -8,8 +20,7 @@
         auf vorab festgelegten Plätzen zu festgelegten
         Zeiten zusammenzubringen.
 ```
-<a id="Inhaltsverzeichnis"></a>
-## Inhaltsverzeichnis
+
 
 #### [Teil 1.Hauptfunktionen:](#1)
 

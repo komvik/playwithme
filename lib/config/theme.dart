@@ -28,18 +28,18 @@ ThemeData myTheme = ThemeData(
     ),
     //___________________________________________ TITLE S:M:L
     titleSmall: TextStyle(
-      fontSize: myDisplayMedium,
+      fontSize: myTitleSmall,
       color: playerDarkBlue,
       //  fontFamily: myMontserrat.fontFamily,
     ),
     titleMedium: TextStyle(
-      fontSize: myDisplayMedium,
+      fontSize: myTitleMedium,
       color: playerDarkBlue,
       //   fontFamily: myTeko.fontFamily,
     ),
     //Btn Registrieren
     titleLarge: TextStyle(
-      fontSize: myTitleSmall,
+      fontSize: myTitleLarge,
       color: headInTheClouds,
       //   fontFamily: myMontserrat.fontFamily,
     ),

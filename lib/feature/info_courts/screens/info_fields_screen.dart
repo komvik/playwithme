@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/info_courts/repositories/court_data.dart';
 import 'package:projekt_481_play_with_me/config/colors.dart';
+import 'package:projekt_481_play_with_me/feature/info_courts/widgets/create_court_widget.dart';
 
 //lib/feature/info_courts/repositories/court_data.dart/';
 
@@ -13,17 +14,17 @@ class InfoFieldsScreen extends StatelessWidget {
       children: [
         // Information header with dynamic court info
         Container(
-          color: const Color.fromARGB(113, 0, 0, 0),
+          color: const Color.fromARGB(0, 2, 153, 177),
           width: 400,
-          height: 350,
+          height: 280,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 "     Platzinformation",
                 style: Theme.of(context)
                     .textTheme
-                    .titleSmall
+                    .displaySmall
                     ?.copyWith(color: oliveLeaf),
               ),
 
@@ -76,9 +77,9 @@ class InfoFieldsScreen extends StatelessWidget {
 
         // Horizontal ListView of court cards
         Container(
-          color: const Color.fromARGB(62, 0, 0, 0),
+          color: const Color.fromARGB(0, 250, 250, 250),
           width: 400,
-          height: 280,
+          height: 270,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.all(8),
@@ -182,6 +183,7 @@ class InfoFieldsScreen extends StatelessWidget {
             },
           ),
         ),
+        const SizedBox(height: 10),
 
         // Button to create a new basketball court
         ElevatedButton(
@@ -207,60 +209,5 @@ class InfoFieldsScreen extends StatelessWidget {
 
   Color getColorForCourt(int index) {
     return index % 2 == 0 ? headInTheClouds : silkenTofu;
-  }
-}
-
-// Separate widget for creating a new court
-class CreateCourtWidget extends StatelessWidget {
-  const CreateCourtWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Neuen Basketballplatz erstellen",
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          const SizedBox(height: 16),
-          const TextField(
-            decoration: InputDecoration(labelText: "Name des Platzes"),
-          ),
-          const SizedBox(height: 8),
-          const TextField(
-            decoration: InputDecoration(labelText: "Standort "),
-          ),
-          const SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text("Platz Foto"),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text("Google Standort"),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text("Platz hinzufügen"),
-          ),
-        ],
-      ),
-    );
   }
 }
