@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/logic/validate_functions_to_all_t_f_f.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/repositories/errorinfo_all_textform.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/widgets/create_profile_button.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/screens/registr_extend_profile.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_erriconbtn_forall.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_universalform_forall.dart';
@@ -115,45 +116,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         ],
                       ),
 
-                      OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          side: const BorderSide(color: Colors.transparent),
-                        ),
-                        onPressed: () {
-                          ValidationUtils.validatePassword(controllerPwd.text,
-                              (error) {
-                            setState(() {
-                              passwordError = error;
-                            });
-                          });
-                          ValidationUtils.validatePasswordC(
-                              controllerPwdConf.text, (error) {
-                            setState(() {
-                              confirmPwdError = error;
-                            });
-                          });
-                          ValidationUtils.validateEmail(controllerEmail.text,
-                              (error) {
-                            setState(() {
-                              emailError = error;
-                            });
-                          });
-
-                          if (loginError == null &&
-                              passwordError == null &&
-                              confirmPwdError == null &&
-                              emailError == null) {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => RegistrationDataScreen(
-                                      email: controllerEmail.text,
-                                      password: controllerPwd.text,
-                                    )));
-                          }
-                        },
-                        child: Text(
-                          "  Profil erstellen",
-                          style: Theme.of(context).textTheme.displayMedium,
-                        ),
+                      CreateProfileButton(
+                        controllerPwd: controllerPwd,
+                        controllerPwdConf: controllerPwdConf,
+                        controllerEmail: controllerEmail,
+                        loginError: loginError,
+                        passwordError: passwordError,
+                        confirmPwdError: confirmPwdError,
+                        emailError: emailError,
                       ),
                     ],
                   ),
