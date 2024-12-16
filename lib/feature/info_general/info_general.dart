@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:projekt_481_play_with_me/feature/authorization/screens/authorization_screen.dart';
 //import 'package:projekt_481_play_with_me/config/colors.dart';
-import 'package:projekt_481_play_with_me/feature/info_courts/repositories/court_data.dart';
+import 'package:projekt_481_play_with_me/feature/courts/repositories/court_data.dart';
 //import 'package:projekt_481_play_with_me/feature/info_players/repositories/player_data.dart';
 
 class InfoGeneralScreen extends StatelessWidget {

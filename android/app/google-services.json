@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "600520037224",
+    "project_id": "playwithme-8770d",
+    "storage_bucket": "playwithme-8770d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600520037224:android:e748699966d52414d3bcdd",
+        "android_client_info": {
+          "package_name": "com.playwithme.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaGeRjPL7ovF2_vXXnxrEL2DCgm9l-sWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

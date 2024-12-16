@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projekt_481_play_with_me/feature/info_courts/repositories/court_data.dart';
+import 'package:projekt_481_play_with_me/feature/courts/repositories/court_data.dart';
 
 //import 'package:intl/intl.dart';
 //import 'package:projekt_481_play_with_me/feature/authorization/screens/authorization_screen.dart';

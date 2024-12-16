@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:projekt_481_play_with_me/feature/info_players/models/player.dart';
-import 'package:projekt_481_play_with_me/feature/info_players/models/player_storage.dart';
-import 'package:projekt_481_play_with_me/feature/info_players/screens/availability_chips.dart';
+import 'package:projekt_481_play_with_me/feature/players/models/player.dart';
+
+import 'package:projekt_481_play_with_me/feature/players/repositories/storage_repository_player.dart';
+import 'package:projekt_481_play_with_me/feature/players/screens/availability_chips.dart';
+
+import 'package:provider/provider.dart';
 
 class InfoPlayersScreen extends StatefulWidget {
   const InfoPlayersScreen({super.key});
@@ -24,7 +27,9 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
 // Load Alle player
 //__________________________________________________________________
   Future<void> _loadPlayers() async {
-    List<Player> loadedPlayers = await PlayerStorage.loadPlayers();
+    //List<Player> loadedPlayers = await PlayerStorage.loadPlayers();
+    List<Player> loadedPlayers =
+        await context.read<StorageRepositoryPlayer>().loadPlayers();
     setState(() {
       _players = loadedPlayers;
     });
@@ -51,7 +56,8 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
       _players.removeAt(index);
     });
     // danach speichere vieder alles
-    await PlayerStorage.savePlayers(_players);
+    //aawait PlayerStorage.savePlayers(_players);
+    await context.read<StorageRepositoryPlayer>().savePlayers(_players);
 
     // zeige status
     ScaffoldMessenger.of(context).showSnackBar(

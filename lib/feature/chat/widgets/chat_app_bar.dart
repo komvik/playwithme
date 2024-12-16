@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/screens/authorization_screen.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/screens/authent_registr_profile.dart';
 
 class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ChatAppBar({

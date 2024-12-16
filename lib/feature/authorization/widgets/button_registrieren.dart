@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/screens/register_create_profile.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/screens/registr_create_profile.dart';
 
 //  the "Registrieren" button belongs to the "authorization_screen"
 

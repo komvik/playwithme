@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/game_planning/screens/gameplan_screen.dart';
-import 'package:projekt_481_play_with_me/feature/info_courts/screens/info_fields_screen.dart';
+import 'package:projekt_481_play_with_me/feature/courts/screens/info_fields_screen.dart';
 import 'package:projekt_481_play_with_me/feature/info_general/info_general.dart';
-import 'package:projekt_481_play_with_me/feature/info_players/screens/info_players_screen.dart';
+import 'package:projekt_481_play_with_me/feature/players/screens/info_players_screen.dart';
 import 'package:projekt_481_play_with_me/shared/navigation_app_bar.dart';
 
 class NavigationWrapper extends StatefulWidget {

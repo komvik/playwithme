@@ -1,4 +1,4 @@
-import 'package:projekt_481_play_with_me/feature/info_players/models/player.dart';
+import 'package:projekt_481_play_with_me/feature/players/models/player.dart';
 
 List<Player> players = [
   Player(

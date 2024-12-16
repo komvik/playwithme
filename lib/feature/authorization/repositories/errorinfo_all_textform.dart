@@ -19,7 +19,7 @@ final List<FieldInfo> fields = [
         '2. .\n'
         '3. .\n'
         '...\n'
-        '20. Password.',
+        '20. Password22.',
   ),
   FieldInfo(
     fieldName: "Password confirm",

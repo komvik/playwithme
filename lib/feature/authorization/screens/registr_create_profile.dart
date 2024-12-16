@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/logic/validate_functions_to_all_t_f_f.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/repositories/delete_all_errorinfo_textform.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/screens/register_extend_profile.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/repositories/errorinfo_all_textform.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/screens/registr_extend_profile.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_erriconbtn_forall.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_universalform_forall.dart';
 
@@ -27,18 +27,20 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/images/registrieren.png"),
+                image: AssetImage("assets/images/new_background.png"),
                 fit: BoxFit.cover)),
         child: Scaffold(
           backgroundColor: const Color.fromRGBO(0, 0, 0, 0),
-          body: Form(
-            child: Stack(
-              textDirection: TextDirection.ltr,
-              children: <Widget>[
-                Positioned(
-                  top: 400,
-                  right: 50,
-                  child: Column(
+          body: Container(
+            width: 430,
+            height: 900,
+            padding:
+                const EdgeInsets.only(top: 130, bottom: 0, left: 0, right: 0),
+            child: Form(
+              child: Stack(
+                textDirection: TextDirection.ltr,
+                children: <Widget>[
+                  Column(
                     children: [
                       //=========================== EMAIL
                       Row(
@@ -49,7 +51,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             dialogContent: fields[3].dialogContext,
                           ),
                           AdaptiveTextFormField(
-                            setWidth: 310,
+                            setWidth: 300,
                             controller: controllerEmail,
                             errorText: emailError,
                             labelText: "E-mail",
@@ -63,7 +65,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           ),
                         ],
                       ),
-
+                      const SizedBox(height: 10),
                       //========================= PASSWORD
                       Row(
                         children: [
@@ -73,6 +75,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             dialogContent: fields[1].dialogContext,
                           ),
                           AdaptiveTextFormField(
+                            setWidth: 300,
                             controller: controllerPwd,
                             errorText: passwordError,
                             labelText: "Password",
@@ -86,6 +89,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           ),
                         ],
                       ),
+
+                      const SizedBox(height: 10),
                       //========================== PASSWORD CONFIRM
                       Row(
                         children: [
@@ -95,6 +100,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             dialogContent: fields[2].dialogContext,
                           ),
                           AdaptiveTextFormField(
+                            setWidth: 300,
                             controller: controllerPwdConf,
                             errorText: confirmPwdError,
                             labelText: "Password widerhollen",
@@ -108,54 +114,51 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           ),
                         ],
                       ),
+
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          side: const BorderSide(color: Colors.transparent),
+                        ),
+                        onPressed: () {
+                          ValidationUtils.validatePassword(controllerPwd.text,
+                              (error) {
+                            setState(() {
+                              passwordError = error;
+                            });
+                          });
+                          ValidationUtils.validatePasswordC(
+                              controllerPwdConf.text, (error) {
+                            setState(() {
+                              confirmPwdError = error;
+                            });
+                          });
+                          ValidationUtils.validateEmail(controllerEmail.text,
+                              (error) {
+                            setState(() {
+                              emailError = error;
+                            });
+                          });
+
+                          if (loginError == null &&
+                              passwordError == null &&
+                              confirmPwdError == null &&
+                              emailError == null) {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => RegistrationDataScreen(
+                                      email: controllerEmail.text,
+                                      password: controllerPwd.text,
+                                    )));
+                          }
+                        },
+                        child: Text(
+                          "  Profil erstellen",
+                          style: Theme.of(context).textTheme.displayMedium,
+                        ),
+                      ),
                     ],
                   ),
-                ),
-                Positioned(
-                  top: 650,
-                  right: 90,
-                  child: OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(color: Colors.transparent),
-                    ),
-                    onPressed: () {
-                      ValidationUtils.validatePassword(controllerPwd.text,
-                          (error) {
-                        setState(() {
-                          passwordError = error;
-                        });
-                      });
-                      ValidationUtils.validatePasswordC(controllerPwdConf.text,
-                          (error) {
-                        setState(() {
-                          confirmPwdError = error;
-                        });
-                      });
-                      ValidationUtils.validateEmail(controllerEmail.text,
-                          (error) {
-                        setState(() {
-                          emailError = error;
-                        });
-                      });
-
-                      if (loginError == null &&
-                          passwordError == null &&
-                          confirmPwdError == null &&
-                          emailError == null) {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => RegistrationDataScreen(
-                                  email: controllerEmail.text,
-                                  password: controllerPwd.text,
-                                )));
-                      }
-                    },
-                    child: Text(
-                      "  Profil erstellen",
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ));

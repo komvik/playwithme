@@ -1,5 +1,5 @@
-import 'package:projekt_481_play_with_me/feature/info_courts/models/court_item.dart';
-import 'package:projekt_481_play_with_me/feature/info_players/models/player.dart';
+import 'package:projekt_481_play_with_me/feature/courts/models/court_item.dart';
+import 'package:projekt_481_play_with_me/feature/players/models/player.dart';
 
 class Game {
   final Court court;

@@ -1,9 +1,10 @@
 import 'dart:developer';
-import 'package:projekt_481_play_with_me/feature/authorization/repositories/database_repository_player.dart';
-import 'package:projekt_481_play_with_me/feature/info_players/models/player.dart';
-import 'package:projekt_481_play_with_me/feature/info_players/repositories/player_data.dart';
 
-class MockdbRepositoryPlayer implements DatabaseRepositoryPlayer {
+import 'package:projekt_481_play_with_me/feature/players/models/player.dart';
+import 'package:projekt_481_play_with_me/feature/players/repositories/%20mockdb_repository_player.dart';
+import 'package:projekt_481_play_with_me/feature/players/repositories/player_data.dart';
+
+class PlayerMockDB implements MockDbRepositoryPlayer {
   final List<Player> loginsPlayers = players;
 
   @override

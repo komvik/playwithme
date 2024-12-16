@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projekt_481_play_with_me/feature/info_courts/repositories/court_data.dart';
+import 'package:projekt_481_play_with_me/feature/courts/repositories/court_data.dart';
 import 'package:projekt_481_play_with_me/config/colors.dart';
-import 'package:projekt_481_play_with_me/feature/info_courts/widgets/create_court_widget.dart';
+import 'package:projekt_481_play_with_me/feature/courts/widgets/create_court_widget.dart';
 
 //lib/feature/info_courts/repositories/court_data.dart/';
 

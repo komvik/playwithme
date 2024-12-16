@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/screens/authorization_screen.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/screens/authent_registr_profile.dart';
 import 'package:projekt_481_play_with_me/feature/chat/screens/chat_screen.dart';
 
 class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {

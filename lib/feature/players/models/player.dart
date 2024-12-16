@@ -11,6 +11,7 @@ class Player {
   final List<String> availability;
   final bool sendMessage;
   final bool online;
+  final String mobileNumber;
 
   Player({
     this.userId = "",
@@ -23,6 +24,7 @@ class Player {
     this.availability = const ['Ja', 'Vielleicht', 'Nein'],
     this.sendMessage = false,
     this.online = false,
+    this.mobileNumber = "-",
   });
 
 // serelisirung
@@ -38,6 +40,7 @@ class Player {
       'availability': availability,
       'sendMessage': sendMessage,
       'online': online,
+      'mobilNumber': mobileNumber,
     };
   }
 
@@ -54,6 +57,7 @@ class Player {
       availability: List<String>.from(json['availability'] ?? []),
       sendMessage: json['sendMessage'] ?? false,
       online: json['online'] ?? false,
+      mobileNumber: json['mobileNumber'] ?? "-",
     );
   }
 

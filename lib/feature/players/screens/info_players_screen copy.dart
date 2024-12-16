@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:projekt_481_play_with_me/feature/info_players/models/player.dart';
-import 'package:projekt_481_play_with_me/feature/info_players/models/player_storage.dart';
+import 'package:projekt_481_play_with_me/feature/players/models/player.dart';
+import 'package:projekt_481_play_with_me/feature/players/models/player_storage.dart';
+import 'package:projekt_481_play_with_me/feature/players/repositories/storage_repository_player.dart';
+import 'package:provider/provider.dart';
 
 class InfoPlayersScreen extends StatefulWidget {
   const InfoPlayersScreen({super.key});
@@ -20,7 +22,9 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
   }
 
   Future<void> _loadPlayers() async {
-    List<Player> loadedPlayers = await PlayerStorage.loadPlayers();
+    //List<Player> loadedPlayers = await PlayerStorage.loadPlayers();
+    List<Player> loadedPlayers =
+        await context.read<StorageRepositoryPlayer>().loadPlayers();
     setState(() {
       players = loadedPlayers;
     });
@@ -33,7 +37,8 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
       players.removeAt(index);
     });
     // danach speichere vieder alles
-    await PlayerStorage.savePlayers(players);
+    //await PlayerStorage.savePlayers(players);
+    await context.read<StorageRepositoryPlayer>().savePlayers(players);
 
     // zeige status
     ScaffoldMessenger.of(context).showSnackBar(
@@ -181,8 +186,12 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                                                           false, // Reset checkbox state
                                                       online: player.online,
                                                     );
-                                                    PlayerStorage.savePlayers(
-                                                        players); // TODO
+                                                    //     PlayerStorage.savePlayers(
+                                                    context
+                                                        .read<
+                                                            StorageRepositoryPlayer>()
+                                                        .savePlayers(
+                                                            players); // TODO
                                                   });
 
                                                   Navigator.of(context)
