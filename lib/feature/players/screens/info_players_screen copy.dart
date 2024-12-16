@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/players/models/player.dart';
-import 'package:projekt_481_play_with_me/feature/players/models/player_storage.dart';
 import 'package:projekt_481_play_with_me/feature/players/repositories/storage_repository_player.dart';
 import 'package:provider/provider.dart';
 
@@ -190,8 +189,7 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                                                     context
                                                         .read<
                                                             StorageRepositoryPlayer>()
-                                                        .savePlayers(
-                                                            players); // TODO
+                                                        .savePlayers(players);
                                                   });
 
                                                   Navigator.of(context)

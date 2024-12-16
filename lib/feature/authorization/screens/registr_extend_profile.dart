@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:projekt_481_play_with_me/feature/players/models/player.dart';
-import 'package:projekt_481_play_with_me/feature/players/models/player_storage.dart';
 import 'package:projekt_481_play_with_me/feature/players/repositories/player_avatar_images.dart';
 import 'package:projekt_481_play_with_me/feature/navigation_wrapper/screens/navigation_wrapper.dart';
 import 'package:projekt_481_play_with_me/feature/players/repositories/storage_repository_player.dart';
