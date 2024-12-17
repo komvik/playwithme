@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/logic/validate_functions_to_all_t_f_f.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/repositories/errorinfo_all_textform.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/create_profile_button.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/screens/registr_extend_profile.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_erriconbtn_forall.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_universalform_forall.dart';
 
