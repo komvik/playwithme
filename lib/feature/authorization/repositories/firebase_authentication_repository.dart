@@ -10,8 +10,8 @@ abstract class FirebaseAuthenticationRepository {
   /// Logout
   Future<void> logoutUser();
 
-  /// SignUp
-  Future<void> signUp(String email, String password);
+  /// createUser
+  Future<void> createUser(String email, String password);
 
   /// Reset Password
   Future<void> resetPassword(String email);
@@ -20,5 +20,5 @@ abstract class FirebaseAuthenticationRepository {
   Future<dynamic> signInWithGoogle();
 
   /// Login with Google
-  Future<bool> signOutFromGoogle();
+  Future<void> signOutFromGoogle();
 }

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/logic/validate_functions_to_all_t_f_f.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/repositories/errorinfo_all_textform.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/repositories/firebase_authentication_repository.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/button_registrieren.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_erriconbtn_forall.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_universalform_forall.dart';
-import 'package:projekt_481_play_with_me/feature/players/models/player.dart';
-
 import 'package:projekt_481_play_with_me/feature/navigation_wrapper/screens/navigation_wrapper.dart';
-import 'package:projekt_481_play_with_me/feature/players/repositories/storage_repository_player.dart';
 
 import 'package:provider/provider.dart';
 
@@ -47,28 +45,30 @@ class _AuthorizationScreenState extends State<AuthorizationScreen> {
     if (emailError == null && passwordAuthError == null) {
       NavigatorState navigator = Navigator.of(context);
       try {
-        //anstatt dass
+        //
+        // anstatt dass
         // Player? player = await repository.getPlayerByEmail(email);
-        //sreibe ich
+        // 1
+        // Change from MokDB to StorageRepository
         // Player? player = await PlayerStorage.getPlayerByEmail(email);
-        Player? player = await context
-            .read<StorageRepositoryPlayer>()
-            .getPlayerByEmail(email);
-
-        if (player != null && player.password == password) {
-          navigator.pushReplacement(
-            MaterialPageRoute(builder: (context) => const NavigationWrapper()),
-          );
-        } else {
-          setState(() {
-            passwordAuthError = "Incorrect login or password";
-          });
-        }
+        // 2
+        // Change from StorageRepository to Provider
+        // Player? player = await context.read<StorageRepositoryPlayer>().getPlayerByEmail(email);
+        // 3 // Change from Provider to FereBbase
+        await context
+            .read<FirebaseAuthenticationRepository>()
+            .loginUser(email, password);
+        navigator.pushReplacement(
+            MaterialPageRoute(builder: (context) => const NavigationWrapper()));
       } catch (e) {
         setState(() {
           emailError = "Error during authorization";
         });
       }
+    } else {
+      setState(() {
+        emailError = "Please correct the errors in the form.";
+      });
     }
   }
 //_________________________________________________________________________

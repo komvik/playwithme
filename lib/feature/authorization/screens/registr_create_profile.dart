@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/logic/validate_functions_to_all_t_f_f.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/repositories/errorinfo_all_textform.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/widgets/create_profile_button.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/widgets/button_create_profile.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_erriconbtn_forall.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/widgets/textformfields_universalform_forall.dart';
 
@@ -17,7 +17,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final controllerPwdConf = TextEditingController();
   final controllerEmail = TextEditingController();
 
-  String? loginError;
   String? passwordError;
   String? confirmPwdError;
   String? emailError;
@@ -115,11 +114,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         ],
                       ),
 
-                      CreateProfileButton(
+                      ButtonCreateProfile(
                         controllerPwd: controllerPwd,
                         controllerPwdConf: controllerPwdConf,
                         controllerEmail: controllerEmail,
-                        loginError: loginError,
+                        //
                         passwordError: passwordError,
                         confirmPwdError: confirmPwdError,
                         emailError: emailError,

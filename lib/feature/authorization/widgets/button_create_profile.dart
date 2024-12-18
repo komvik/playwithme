@@ -3,26 +3,31 @@ import 'package:projekt_481_play_with_me/feature/authorization/logic/validate_fu
 import 'package:projekt_481_play_with_me/feature/authorization/screens/registr_extend_profile.dart';
 
 // ignore: must_be_immutable
-class CreateProfileButton extends StatelessWidget {
+class ButtonCreateProfile extends StatefulWidget {
   final TextEditingController controllerPwd;
   final TextEditingController controllerPwdConf;
   final TextEditingController controllerEmail;
-  final String? loginError;
+//
   String? passwordError = "";
   String? confirmPwdError = "";
   String? emailError = "";
 
-  CreateProfileButton({
+  ButtonCreateProfile({
     super.key,
     required this.controllerPwd,
     required this.controllerPwdConf,
     required this.controllerEmail,
-    required this.loginError,
+    //
     this.passwordError,
     this.confirmPwdError,
     this.emailError,
   });
 
+  @override
+  State<ButtonCreateProfile> createState() => _ButtonCreateProfileState();
+}
+
+class _ButtonCreateProfileState extends State<ButtonCreateProfile> {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
@@ -30,24 +35,24 @@ class CreateProfileButton extends StatelessWidget {
         side: const BorderSide(color: Colors.transparent),
       ),
       onPressed: () {
-        ValidationUtils.validatePassword(controllerPwd.text, (error) {
-          passwordError = error;
+        ValidationUtils.validatePassword(widget.controllerPwd.text, (error) {
+          widget.passwordError = error;
         });
-        ValidationUtils.validatePasswordC(controllerPwdConf.text, (error) {
-          confirmPwdError = error;
+        ValidationUtils.validatePasswordC(widget.controllerPwdConf.text,
+            (error) {
+          widget.confirmPwdError = error;
         });
-        ValidationUtils.validateEmail(controllerEmail.text, (error) {
-          emailError = error;
+        ValidationUtils.validateEmail(widget.controllerEmail.text, (error) {
+          widget.emailError = error;
         });
 
-        if (loginError == null &&
-            passwordError == null &&
-            confirmPwdError == null &&
-            emailError == null) {
+        if (widget.passwordError == null &&
+            widget.confirmPwdError == null &&
+            widget.emailError == null) {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => RegistrationDataScreen(
-              email: controllerEmail.text,
-              password: controllerPwd.text,
+              email: widget.controllerEmail.text,
+              password: widget.controllerPwd.text,
             ),
           ));
         }

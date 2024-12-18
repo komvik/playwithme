@@ -1,0 +1,9 @@
+[ OK ] 1.File login_repository.dart  
+         - Fix Error Logging with try-catch
+         { throw an exception so that the user can handle the error or notify }
+   
+[   ] 2.    
+
+[   ] 3.
+
+[   ] 4.

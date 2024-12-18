@@ -24,7 +24,7 @@ class PlayerStorage implements StorageRepositoryPlayer {
   Future<List<Player>> loadPlayers() async {
     final prefs = await SharedPreferences.getInstance();
     String? playersJson = prefs.getString("players");
-    return Player.decodePlayers(playersJson!); //TODO CHECK !
+    return Player.decodePlayers(playersJson!);
   }
 
   @override

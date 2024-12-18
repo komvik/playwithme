@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/models/login_firebase.dart';
+import 'package:projekt_481_play_with_me/feature/authorization/repositories/firebase_authentication_repository.dart';
 import 'package:projekt_481_play_with_me/feature/players/models/player.dart';
 import 'package:projekt_481_play_with_me/feature/players/repositories/player_avatar_images.dart';
 import 'package:projekt_481_play_with_me/feature/navigation_wrapper/screens/navigation_wrapper.dart';
@@ -68,6 +72,60 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
     setState(() {});
   }
 
+//signin
+//eMail: _email,
+// old password: _password,
+
+  // Future<void> _authenticationPlayerInFireBase() async {
+  //   await context
+  //       .read<FirebaseAuthenticationRepository>()
+  //       .createUser(_email, _password);
+  //   Navigator.of(context).pushReplacement(
+  //       MaterialPageRoute(builder: (context) => const NavigationWrapper()));
+  // }
+
+//save old
+
+  // Future<void> _addPlayers() async {
+  //   final newPlayer = Player(
+  //     eMail: _email,
+  //     password: _password,
+  //     firstName: _controllerName.text,
+  //     lastName: _controllerLastname.text,
+  //     nickName: _controllerNickname.text,
+  //     avatarUrl: _selectedAvatar,
+  //     mobileNumber: _controllerMobilnum.text,
+  //   );
+  //   setState(() {
+  //     _players.add(newPlayer);
+  //   });
+
+  //   //    List<Player> players = [player];
+  //   //    await PlayerStorage.savePlayers(_players);
+  //   await context.read<StorageRepositoryPlayer>().savePlayers(_players);
+
+  //   Navigator.of(context).pushReplacement(
+  //       MaterialPageRoute(builder: (context) => const NavigationWrapper()));
+  // }
+
+// save new
+
+  Future<void> _authenticationPlayerInFireBase() async {
+    try {
+      await context
+          .read<FirebaseAuthenticationRepository>()
+          .createUser(_email, _password);
+
+      await _addPlayers();
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Error user registring."),
+        ),
+      );
+    }
+  }
+
   Future<void> _addPlayers() async {
     final newPlayer = Player(
       eMail: _email,
@@ -79,16 +137,43 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
       mobileNumber: _controllerMobilnum.text,
     );
 
-    setState(() {
-      _players.add(newPlayer);
-    });
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      try {
+        final playerRef =
+            FirebaseFirestore.instance.collection('players').doc(user.uid);
 
-    // List<Player> players = [player];
-    //await PlayerStorage.savePlayers(_players);
-    await context.read<StorageRepositoryPlayer>().savePlayers(_players);
+        await playerRef.set({
+          'email': _email,
+          'password': _password,
+          'firstName': _controllerName.text,
+          'lastName': _controllerLastname.text,
+          'nickName': _controllerNickname.text,
+          'avatarUrl': _selectedAvatar,
+          'mobileNumber': _controllerMobilnum.text,
+          'uid': user.uid,
+        });
 
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const NavigationWrapper()));
+        // После успешного сохранения данных, переходим на новый экран
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const NavigationWrapper()),
+        );
+      } catch (e) {
+        // Обработка ошибок записи в Firestore
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Error data savig."),
+          ),
+        );
+      }
+    } else {
+      // Если нет текущего пользователя, выводим ошибку
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("User not authorized error!"),
+        ),
+      );
+    }
   }
 
   void _clearFields() {
@@ -254,7 +339,8 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      _addPlayers();
+                      _authenticationPlayerInFireBase();
+                      //_addPlayers();
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Center(
