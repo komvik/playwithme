@@ -1,8 +1,8 @@
 import 'package:projekt_481_play_with_me/feature/players/models/player.dart';
-import 'package:projekt_481_play_with_me/feature/players/repositories/storage_repository_player.dart';
+import 'package:projekt_481_play_with_me/feature/players/repositories/player_repository_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class PlayerStorage implements StorageRepositoryPlayer {
+class PlayerStorage implements PlayerRepositoryStorage {
   @override
   Future<void> deletePlayerByEmail(String email) async {
     List<Player> players = await loadPlayers();

@@ -1,9 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:projekt_481_play_with_me/feature/players/models/player.dart';
 
-import 'package:projekt_481_play_with_me/feature/players/repositories/storage_repository_player.dart';
+import 'package:projekt_481_play_with_me/feature/players/repositories/player_repository_firebase.dart';
+//import 'package:projekt_481_play_with_me/feature/players/repositories/player_repository_storage.dart';
 import 'package:projekt_481_play_with_me/feature/players/screens/availability_chips.dart';
-
 import 'package:provider/provider.dart';
 
 class InfoPlayersScreen extends StatefulWidget {
@@ -29,25 +31,26 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
   Future<void> _loadPlayers() async {
     //List<Player> loadedPlayers = await PlayerStorage.loadPlayers();
     List<Player> loadedPlayers =
-        await context.read<StorageRepositoryPlayer>().loadPlayers();
+        //await context.read<PlayerRepositoryStorage>().loadPlayers();
+        await context.read<PlayerRepositoryFirebase>().loadAllPlayers();
     setState(() {
       _players = loadedPlayers;
     });
   }
 
-//
+//Move to the next player
 //__________________________________________________
   void _nextPlayer() {
     setState(() {
       if (_currentPlayerIndex < _players.length - 1) {
         _currentPlayerIndex++;
       } else {
-        print("check completed");
+        log("check completed");
       }
     });
   }
 
-// Lösche player mit index
+// Delete player by index
 //__________________________________________________________________
   Future<void> _deletePlayerByIndex(int index) async {
     // löshe ich player aus der liste per index
@@ -57,7 +60,9 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
     });
     // danach speichere vieder alles
     //aawait PlayerStorage.savePlayers(_players);
-    await context.read<StorageRepositoryPlayer>().savePlayers(_players);
+    await context
+        .read<PlayerRepositoryFirebase>()
+        .deletePlayerByEmail(playerToDelete.eMail);
 
     // zeige status
     ScaffoldMessenger.of(context).showSnackBar(
@@ -107,9 +112,6 @@ class _InfoPlayersScreenState extends State<InfoPlayersScreen> {
                           ),
                         ),
                         const SizedBox(height: 8),
-                        // _______________________________Checkbox to send message
-                        // TODO erstmall gelöscht danach aus file
-                        // info_player_screen.dart hollen und implementieren
                       ],
                     ),
                     const SizedBox(width: 8), // Space between status and avatar

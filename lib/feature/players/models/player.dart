@@ -73,4 +73,36 @@ class Player {
     List<dynamic> playerList = jsonDecode(playersJson);
     return playerList.map((playerJson) => Player.fromJson(playerJson)).toList();
   }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'userId': userId,
+      'firstName': firstName,
+      'lastName': lastName,
+      'nickName': nickName,
+      'eMail': eMail,
+      'avatarUrl': avatarUrl,
+      'availability': availability,
+      'sendMessage': sendMessage,
+      'online': online,
+      'mobileNumber': mobileNumber,
+      // 'password' not saved
+    };
+  }
+
+  static Player fromMap(Map<String, dynamic> map, {String? password}) {
+    return Player(
+      userId: map['userId'] ?? "",
+      firstName: map['firstName'] ?? "Max",
+      lastName: map['lastName'] ?? "Mustermann",
+      nickName: map['nickName'] ?? "-",
+      eMail: map['eMail'] ?? "example@email.mail",
+      password: password ?? "",
+      avatarUrl: map['avatarUrl'] ?? "assets/images_avatar/avatar1.png",
+      availability: List<String>.from(map['availability'] ?? []),
+      sendMessage: map['sendMessage'] ?? false,
+      online: map['online'] ?? false,
+      mobileNumber: map['mobileNumber'] ?? "-",
+    );
+  }
 }

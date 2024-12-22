@@ -2,12 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:projekt_481_play_with_me/feature/authorization/models/login_firebase.dart';
+//import 'package:projekt_481_play_with_me/feature/authorization/models/login_firebase.dart';
 import 'package:projekt_481_play_with_me/feature/authorization/repositories/firebase_authentication_repository.dart';
 import 'package:projekt_481_play_with_me/feature/players/models/player.dart';
 import 'package:projekt_481_play_with_me/feature/players/repositories/player_avatar_images.dart';
 import 'package:projekt_481_play_with_me/feature/navigation_wrapper/screens/navigation_wrapper.dart';
-import 'package:projekt_481_play_with_me/feature/players/repositories/storage_repository_player.dart';
+import 'package:projekt_481_play_with_me/feature/players/repositories/player_repository_storage.dart';
 import 'package:provider/provider.dart';
 
 class RegistrationDataScreen extends StatefulWidget {
@@ -67,7 +67,7 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
 // abruffen alle exestierte players
   Future<void> _loadPlayers() async {
     // _players = await PlayerStorage.loadPlayers();
-    _players = await context.read<StorageRepositoryPlayer>().loadPlayers();
+    _players = await context.read<PlayerRepositoryStorage>().loadPlayers();
 
     setState(() {});
   }
@@ -110,7 +110,7 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
 
 // save new
 
-  Future<void> _authenticationPlayerInFireBase() async {
+  Future<void> _authenticationPlayerInFireBaseAndSaveData() async {
     try {
       await context
           .read<FirebaseAuthenticationRepository>()
@@ -127,16 +127,6 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
   }
 
   Future<void> _addPlayers() async {
-    final newPlayer = Player(
-      eMail: _email,
-      password: _password,
-      firstName: _controllerName.text,
-      lastName: _controllerLastname.text,
-      nickName: _controllerNickname.text,
-      avatarUrl: _selectedAvatar,
-      mobileNumber: _controllerMobilnum.text,
-    );
-
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       try {
@@ -154,12 +144,10 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
           'uid': user.uid,
         });
 
-        // После успешного сохранения данных, переходим на новый экран
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const NavigationWrapper()),
         );
       } catch (e) {
-        // Обработка ошибок записи в Firestore
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text("Error data savig."),
@@ -167,7 +155,6 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
         );
       }
     } else {
-      // Если нет текущего пользователя, выводим ошибку
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text("User not authorized error!"),
@@ -339,7 +326,7 @@ class _RegistrationDataScreenState extends State<RegistrationDataScreen> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      _authenticationPlayerInFireBase();
+                      _authenticationPlayerInFireBaseAndSaveData();
                       //_addPlayers();
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
