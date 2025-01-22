@@ -1,7 +1,7 @@
 import 'dart:developer';
-import 'package:projekt_481_play_with_me/feature/players/repositories/%20mockdb_repository_player.dart';
+import 'package:projekt_481_play_with_me/feature/players/repositories/player_repository_mockdb.dart';
 import 'package:projekt_481_play_with_me/feature/players/models/player.dart';
-import 'package:projekt_481_play_with_me/feature/players/repositories/player_data.dart';
+import 'package:projekt_481_play_with_me/feature/players/repositories/player_list_players_formockdb.dart';
 
 class MockdbRepositoryPlayer implements MockDbRepositoryPlayer {
   final List<Player> loginsPlayers = players;

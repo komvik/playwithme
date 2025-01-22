@@ -45,27 +45,4 @@ class MainApp extends StatelessWidget {
       home: const AuthorizationScreen(),
     );
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return MaterialApp(
-  //     title: "Willkommen,\nSpiel mit uns",
-  //     theme: myTheme,
-  //     home: StreamBuilder(
-  //       stream:
-  //           context.read<FirebaseAuthenticationRepository>().onAuthStateChanged,
-  //       builder: (context, snapshot) {
-  //         // If logged in
-  //         if (snapshot.hasData) {
-  //           // show HomeScreen,
-  //           return const NavigationWrapper();
-  //           // if not logged in
-  //         } else {
-  //           // show Login
-  //           return const AuthorizationScreen();
-  //         }
-  //       },
-  //     ),
-  //   );
-  // }
 }
